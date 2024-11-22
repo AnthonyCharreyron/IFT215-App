@@ -15,6 +15,11 @@ namespace AppliBoursoBank
             return compte.getLastsTransactions(count);
         }
 
+        public decimal getSoldeCompte(Compte compte)
+        {
+            return compte.Solde;
+        }
+
 
 
         public void fireEvent()

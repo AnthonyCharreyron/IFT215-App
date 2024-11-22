@@ -16,6 +16,7 @@
             Transactions = new List<Transaction>();
         }
 
+
         public void Deposer(decimal montant, string destinataire = "Anonyme", string etat = "En cours", Categorie categorie = Categorie.Autre)
         {
             if (montant <= 0)
@@ -37,10 +38,6 @@
             Transactions.Add(new Transaction(-montant, destinataire, etat, categorie));
         }
 
-        //foreach (var transaction in Transactions)
-        //{
-        //Console.WriteLine(transaction);
-        //}
 
         public List<Transaction> getLastsTransactions(int count)
         {
