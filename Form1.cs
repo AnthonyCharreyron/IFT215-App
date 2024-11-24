@@ -25,6 +25,7 @@ namespace AppliBoursoBank
             Creer_Compte();
             getListTransactions();
             afficherSoldeCompte();
+            Transactions_Events(groupBox1);
 
             controleur.Subscribe(this);
 
@@ -47,6 +48,43 @@ namespace AppliBoursoBank
             img_budget.Paint += Img_Contour;
 
         }
+        private void AfficherFenetreTransaction(object sender, MouseEventArgs e, Control control)
+        {  
+            var fenetreTransaction = new FenetreTransaction();
+            fenetreTransaction.Show();
+        }
+
+        private void Transactions_Events(Control control)
+        {
+            Panel[] panels = { p_transaction1, p_transaction2, p_transaction3 };
+            foreach (Panel panel in panels)
+            {
+                panel.MouseEnter += (sender, e) => Hover_Panel(sender, e, true);
+                panel.MouseLeave += (sender, e) => Hover_Panel(sender, e, false);
+
+                panel.MouseClick += (sender, e) => AfficherFenetreTransaction(sender, e, panel);
+
+                foreach (Label child in panel.Controls)
+                {
+                    child.MouseClick += (sender, e) => AfficherFenetreTransaction(sender, e, panel);
+
+                    child.MouseEnter += (sender, e) =>
+                    {
+                        panel.BackColor = Color.LightGray;
+                        child.Cursor = Cursors.Hand;
+                    };
+                    child.MouseLeave += (sender, e) =>
+                    {
+                        if (!panel.ClientRectangle.Contains(panel.PointToClient(Cursor.Position)))
+                        {
+                            panel.BackColor = SystemColors.Control;
+                            child.Cursor = Cursors.Default;
+                        }
+                    };
+
+                }
+            }
+        }
 
         private void Img_Contour(object sender, PaintEventArgs e)
         {
@@ -56,6 +94,14 @@ namespace AppliBoursoBank
                 e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                 e.Graphics.DrawEllipse(bluePen, 2.5f, 2.5f, 100, 100);
             }
+        }
+
+        private void Hover_Panel(object sender, EventArgs e, bool isHovering)
+        {
+            var panel = sender as Panel;
+            
+            panel.BackColor = isHovering ? Color.LightGray : SystemColors.Control;
+            panel.Cursor = isHovering ? Cursors.Hand : Cursors.Default;
         }
 
 
@@ -110,7 +156,7 @@ namespace AppliBoursoBank
             }
         }
 
-        private void afficherSoldeCompte() 
+        private void afficherSoldeCompte()
         {
 
             var solde = controleur.getSoldeCompte(compte);

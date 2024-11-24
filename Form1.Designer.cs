@@ -30,19 +30,20 @@
         {
             label1 = new Label();
             groupBox1 = new GroupBox();
-            panel5 = new Panel();
+            panel12 = new Panel();
+            p_transaction3 = new Panel();
             l_categorie3 = new Label();
             l_etat3 = new Label();
             l_montant3 = new Label();
             l_date3 = new Label();
             l_dest3 = new Label();
-            panel4 = new Panel();
+            p_transaction2 = new Panel();
             l_categorie2 = new Label();
             l_etat2 = new Label();
             l_montant2 = new Label();
             l_date2 = new Label();
             l_dest2 = new Label();
-            panel1 = new Panel();
+            p_transaction1 = new Panel();
             l_categorie1 = new Label();
             l_etat1 = new Label();
             l_montant1 = new Label();
@@ -50,6 +51,12 @@
             l_dest1 = new Label();
             l_solde = new Label();
             panel2 = new Panel();
+            panel11 = new Panel();
+            panel10 = new Panel();
+            panel9 = new Panel();
+            panel8 = new Panel();
+            panel7 = new Panel();
+            panel6 = new Panel();
             pictureBox1 = new PictureBox();
             label9 = new Label();
             label8 = new Label();
@@ -66,10 +73,13 @@
             label13 = new Label();
             label12 = new Label();
             label11 = new Label();
+            panel13 = new Panel();
+            panel14 = new Panel();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             groupBox1.SuspendLayout();
-            panel5.SuspendLayout();
-            panel4.SuspendLayout();
-            panel1.SuspendLayout();
+            p_transaction3.SuspendLayout();
+            p_transaction2.SuspendLayout();
+            p_transaction1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
@@ -77,16 +87,17 @@
             ((System.ComponentModel.ISupportInitialize)img_infocarte).BeginInit();
             ((System.ComponentModel.ISupportInitialize)img_infocompte).BeginInit();
             ((System.ComponentModel.ISupportInitialize)img_virement).BeginInit();
+            panel14.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.DodgerBlue;
-            label1.Location = new Point(431, 121);
+            label1.Location = new Point(266, 14);
             label1.Name = "label1";
-            label1.Size = new Size(170, 28);
+            label1.Size = new Size(175, 28);
             label1.TabIndex = 0;
             label1.Text = "Compte courant :";
             label1.TextAlign = ContentAlignment.TopCenter;
@@ -94,27 +105,36 @@
             // groupBox1
             // 
             groupBox1.AutoSize = true;
-            groupBox1.Controls.Add(panel5);
-            groupBox1.Controls.Add(panel4);
-            groupBox1.Controls.Add(panel1);
-            groupBox1.Location = new Point(189, 334);
+            groupBox1.Controls.Add(panel12);
+            groupBox1.Controls.Add(p_transaction3);
+            groupBox1.Controls.Add(p_transaction2);
+            groupBox1.Controls.Add(p_transaction1);
+            groupBox1.Location = new Point(24, 227);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(821, 259);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dernières transactions";
             // 
-            // panel5
+            // panel12
             // 
-            panel5.Controls.Add(l_categorie3);
-            panel5.Controls.Add(l_etat3);
-            panel5.Controls.Add(l_montant3);
-            panel5.Controls.Add(l_date3);
-            panel5.Controls.Add(l_dest3);
-            panel5.Location = new Point(6, 168);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(809, 65);
-            panel5.TabIndex = 5;
+            panel12.BorderStyle = BorderStyle.FixedSingle;
+            panel12.Location = new Point(19, 94);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(780, 1);
+            panel12.TabIndex = 7;
+            // 
+            // p_transaction3
+            // 
+            p_transaction3.Controls.Add(l_categorie3);
+            p_transaction3.Controls.Add(l_etat3);
+            p_transaction3.Controls.Add(l_montant3);
+            p_transaction3.Controls.Add(l_date3);
+            p_transaction3.Controls.Add(l_dest3);
+            p_transaction3.Location = new Point(6, 168);
+            p_transaction3.Name = "p_transaction3";
+            p_transaction3.Size = new Size(809, 65);
+            p_transaction3.TabIndex = 5;
             // 
             // l_categorie3
             // 
@@ -167,17 +187,17 @@
             l_dest3.TabIndex = 0;
             l_dest3.Text = "Destinataire";
             // 
-            // panel4
+            // p_transaction2
             // 
-            panel4.Controls.Add(l_categorie2);
-            panel4.Controls.Add(l_etat2);
-            panel4.Controls.Add(l_montant2);
-            panel4.Controls.Add(l_date2);
-            panel4.Controls.Add(l_dest2);
-            panel4.Location = new Point(6, 97);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(809, 65);
-            panel4.TabIndex = 4;
+            p_transaction2.Controls.Add(l_categorie2);
+            p_transaction2.Controls.Add(l_etat2);
+            p_transaction2.Controls.Add(l_montant2);
+            p_transaction2.Controls.Add(l_date2);
+            p_transaction2.Controls.Add(l_dest2);
+            p_transaction2.Location = new Point(6, 97);
+            p_transaction2.Name = "p_transaction2";
+            p_transaction2.Size = new Size(809, 65);
+            p_transaction2.TabIndex = 4;
             // 
             // l_categorie2
             // 
@@ -230,17 +250,17 @@
             l_dest2.TabIndex = 0;
             l_dest2.Text = "Destinataire";
             // 
-            // panel1
+            // p_transaction1
             // 
-            panel1.Controls.Add(l_categorie1);
-            panel1.Controls.Add(l_etat1);
-            panel1.Controls.Add(l_montant1);
-            panel1.Controls.Add(l_date1);
-            panel1.Controls.Add(l_dest1);
-            panel1.Location = new Point(6, 26);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(809, 65);
-            panel1.TabIndex = 0;
+            p_transaction1.Controls.Add(l_categorie1);
+            p_transaction1.Controls.Add(l_etat1);
+            p_transaction1.Controls.Add(l_montant1);
+            p_transaction1.Controls.Add(l_date1);
+            p_transaction1.Controls.Add(l_dest1);
+            p_transaction1.Location = new Point(6, 26);
+            p_transaction1.Name = "p_transaction1";
+            p_transaction1.Size = new Size(809, 65);
+            p_transaction1.TabIndex = 0;
             // 
             // l_categorie1
             // 
@@ -298,7 +318,7 @@
             l_solde.AutoSize = true;
             l_solde.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             l_solde.ForeColor = Color.DodgerBlue;
-            l_solde.Location = new Point(607, 121);
+            l_solde.Location = new Point(442, 14);
             l_solde.Name = "l_solde";
             l_solde.Size = new Size(72, 31);
             l_solde.TabIndex = 4;
@@ -306,7 +326,14 @@
             // 
             // panel2
             // 
-            panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.AutoSize = true;
+            panel2.BackColor = Color.SkyBlue;
+            panel2.Controls.Add(panel11);
+            panel2.Controls.Add(panel10);
+            panel2.Controls.Add(panel9);
+            panel2.Controls.Add(panel8);
+            panel2.Controls.Add(panel7);
+            panel2.Controls.Add(panel6);
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(label9);
             panel2.Controls.Add(label8);
@@ -314,10 +341,59 @@
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label5);
             panel2.Controls.Add(label4);
-            panel2.Location = new Point(3, 4);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1179, 80);
+            panel2.Size = new Size(1184, 78);
             panel2.TabIndex = 5;
+            // 
+            // panel11
+            // 
+            panel11.BorderStyle = BorderStyle.FixedSingle;
+            panel11.Location = new Point(186, 5);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(1, 70);
+            panel11.TabIndex = 12;
+            // 
+            // panel10
+            // 
+            panel10.BorderStyle = BorderStyle.FixedSingle;
+            panel10.Location = new Point(855, 5);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(1, 70);
+            panel10.TabIndex = 11;
+            // 
+            // panel9
+            // 
+            panel9.BorderStyle = BorderStyle.FixedSingle;
+            panel9.Location = new Point(623, 5);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(1, 70);
+            panel9.TabIndex = 10;
+            // 
+            // panel8
+            // 
+            panel8.BorderStyle = BorderStyle.FixedSingle;
+            panel8.Location = new Point(520, 5);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(1, 70);
+            panel8.TabIndex = 9;
+            // 
+            // panel7
+            // 
+            panel7.BorderStyle = BorderStyle.FixedSingle;
+            panel7.Location = new Point(420, 5);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(1, 70);
+            panel7.TabIndex = 8;
+            // 
+            // panel6
+            // 
+            panel6.BorderStyle = BorderStyle.FixedSingle;
+            panel6.Location = new Point(275, 5);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(1, 70);
+            panel6.TabIndex = 7;
             // 
             // pictureBox1
             // 
@@ -333,10 +409,11 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 10.8F);
-            label9.ForeColor = Color.DodgerBlue;
-            label9.Location = new Point(866, 28);
+            label9.ForeColor = Color.DarkBlue;
+            label9.Location = new Point(857, 8);
             label9.Name = "label9";
-            label9.Size = new Size(135, 25);
+            label9.Padding = new Padding(10, 20, 10, 20);
+            label9.Size = new Size(155, 65);
             label9.TabIndex = 5;
             label9.Text = "Bourse et Actus";
             // 
@@ -344,10 +421,11 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 10.8F);
-            label8.ForeColor = Color.DodgerBlue;
-            label8.Location = new Point(634, 28);
+            label8.ForeColor = Color.DarkBlue;
+            label8.Location = new Point(627, 8);
             label8.Name = "label8";
-            label8.Size = new Size(205, 25);
+            label8.Padding = new Padding(10, 20, 10, 20);
+            label8.Size = new Size(225, 65);
             label8.TabIndex = 4;
             label8.Text = "Bons plans et Parrainage";
             // 
@@ -355,10 +433,11 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10.8F);
-            label7.ForeColor = Color.DodgerBlue;
-            label7.Location = new Point(529, 28);
+            label7.ForeColor = Color.DarkBlue;
+            label7.Location = new Point(524, 8);
             label7.Name = "label7";
-            label7.Size = new Size(78, 25);
+            label7.Padding = new Padding(10, 20, 10, 20);
+            label7.Size = new Size(98, 65);
             label7.TabIndex = 3;
             label7.Text = "Produits";
             // 
@@ -366,10 +445,11 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10.8F);
-            label6.ForeColor = Color.DodgerBlue;
-            label6.Location = new Point(428, 28);
+            label6.ForeColor = Color.DarkBlue;
+            label6.Location = new Point(424, 8);
             label6.Name = "label6";
-            label6.Size = new Size(75, 25);
+            label6.Padding = new Padding(10, 20, 10, 20);
+            label6.Size = new Size(95, 65);
             label6.TabIndex = 2;
             label6.Text = "Services";
             // 
@@ -377,10 +457,11 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10.8F);
-            label5.ForeColor = Color.DodgerBlue;
-            label5.Location = new Point(284, 28);
+            label5.ForeColor = Color.DarkBlue;
+            label5.Location = new Point(280, 8);
             label5.Name = "label5";
-            label5.Size = new Size(119, 25);
+            label5.Padding = new Padding(10, 20, 10, 20);
+            label5.Size = new Size(139, 65);
             label5.TabIndex = 1;
             label5.Text = "Mes comptes";
             // 
@@ -388,10 +469,11 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10.8F);
-            label4.ForeColor = Color.DodgerBlue;
-            label4.Location = new Point(192, 28);
+            label4.ForeColor = Color.DarkBlue;
+            label4.Location = new Point(188, 8);
             label4.Name = "label4";
-            label4.Size = new Size(67, 25);
+            label4.Padding = new Padding(10, 20, 10, 20);
+            label4.Size = new Size(87, 65);
             label4.TabIndex = 0;
             label4.Text = "Accueil";
             // 
@@ -415,7 +497,7 @@
             panel3.Controls.Add(label12);
             panel3.Controls.Add(label11);
             panel3.Controls.Add(label10);
-            panel3.Location = new Point(189, 182);
+            panel3.Location = new Point(24, 75);
             panel3.Name = "panel3";
             panel3.Size = new Size(821, 140);
             panel3.TabIndex = 6;
@@ -491,25 +573,43 @@
             label11.TabIndex = 5;
             label11.Text = "Infos compte";
             // 
+            // panel13
+            // 
+            panel13.BorderStyle = BorderStyle.FixedSingle;
+            panel13.Location = new Point(44, 390);
+            panel13.Name = "panel13";
+            panel13.Size = new Size(780, 1);
+            panel13.TabIndex = 8;
+            // 
+            // panel14
+            // 
+            panel14.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel14.Controls.Add(panel13);
+            panel14.Controls.Add(panel3);
+            panel14.Controls.Add(l_solde);
+            panel14.Controls.Add(groupBox1);
+            panel14.Controls.Add(label1);
+            panel14.Location = new Point(165, 107);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(868, 498);
+            panel14.TabIndex = 9;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1186, 616);
-            Controls.Add(panel3);
+            ClientSize = new Size(1184, 616);
+            Controls.Add(panel14);
             Controls.Add(panel2);
-            Controls.Add(l_solde);
-            Controls.Add(groupBox1);
-            Controls.Add(label1);
             Name = "Form1";
             Text = "Form1";
             groupBox1.ResumeLayout(false);
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            p_transaction3.ResumeLayout(false);
+            p_transaction3.PerformLayout();
+            p_transaction2.ResumeLayout(false);
+            p_transaction2.PerformLayout();
+            p_transaction1.ResumeLayout(false);
+            p_transaction1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -519,6 +619,8 @@
             ((System.ComponentModel.ISupportInitialize)img_infocarte).EndInit();
             ((System.ComponentModel.ISupportInitialize)img_infocompte).EndInit();
             ((System.ComponentModel.ISupportInitialize)img_virement).EndInit();
+            panel14.ResumeLayout(false);
+            panel14.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -528,7 +630,7 @@
         private Label label1;
         private GroupBox groupBox1;
         private Button button3;
-        private Panel panel1;
+        private Panel p_transaction1;
         private Label l_solde;
         private Panel panel2;
         private Label label6;
@@ -544,14 +646,14 @@
         private Label label11;
         private Label l_dest1;
         private Label l_date1;
-        private Panel panel4;
+        private Panel p_transaction2;
         private Label l_etat2;
         private Label l_montant2;
         private Label l_date2;
         private Label l_dest2;
         private Label l_etat1;
         private Label l_montant1;
-        private Panel panel5;
+        private Panel p_transaction3;
         private Label l_etat3;
         private Label l_montant3;
         private Label l_date3;
@@ -564,5 +666,15 @@
         private Label l_categorie1;
         private Label l_categorie3;
         private PictureBox pictureBox1;
+        private Panel panel6;
+        private Panel panel8;
+        private Panel panel7;
+        private Panel panel11;
+        private Panel panel10;
+        private Panel panel9;
+        private Panel panel12;
+        private Panel panel13;
+        private Panel panel14;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
