@@ -51,7 +51,7 @@ namespace AppliBoursoBank
         private void AfficherFenetreTransaction(object sender, MouseEventArgs e, Control control)
         {  
             var fenetreTransaction = new FenetreTransaction();
-            fenetreTransaction.Show();
+            fenetreTransaction.ShowDialog();
         }
 
         private void Transactions_Events(Control control)

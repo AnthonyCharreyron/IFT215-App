@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AppliBoursoBank")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+42f13e2b7ac0b47a07e4f85d22b4819ab8a5000e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+86a762a14f10b8ef7e368edfac6088d0d0e5d7e8")]
 [assembly: System.Reflection.AssemblyProductAttribute("AppliBoursoBank")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AppliBoursoBank")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
