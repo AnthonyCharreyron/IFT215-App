@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "6xl5loWG5nQ=",
+  "dgSpecHash": "7sLbkk4md5w=",
   "success": true,
   "projectFilePath": "C:\\Users\\charr\\winform\\AppliBoursoBank\\AppliBoursoBank.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\charr\\.nuget\\packages\\winforms.datavisualization\\1.9.2\\winforms.datavisualization.1.9.2.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -3,8 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\charr\\winform\\AppliBoursoBank\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|c:\\users\\charr\\winform\\appliboursobank\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|C:\\Users\\charr\\winform\\AppliBoursoBank\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|C:\\Users\\charr\\winform\\AppliBoursoBank\\fenetretransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|solutionrelative:fenetretransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|c:\\users\\charr\\winform\\appliboursobank\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|solutionrelative:transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|c:\\users\\charr\\winform\\appliboursobank\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|c:\\users\\charr\\winform\\appliboursobank\\fenetretransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|solutionrelative:fenetretransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|c:\\users\\charr\\winform\\appliboursobank\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|solutionrelative:form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|c:\\users\\charr\\winform\\appliboursobank\\controleur.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|solutionrelative:controleur.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|c:\\users\\charr\\winform\\appliboursobank\\compte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|solutionrelative:compte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|c:\\users\\charr\\winform\\appliboursobank\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0115F89B-18DC-41D8-9989-68A71B2E167A}|AppliBoursoBank.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,23 +46,124 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\charr\\winform\\AppliBoursoBank\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\charr\\winform\\AppliBoursoBank\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAkwDcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-17T21:45:05.855Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FenetreTransaction.cs",
+              "DocumentMoniker": "C:\\Users\\charr\\winform\\AppliBoursoBank\\FenetreTransaction.cs",
+              "RelativeDocumentMoniker": "FenetreTransaction.cs",
+              "ToolTip": "C:\\Users\\charr\\winform\\AppliBoursoBank\\FenetreTransaction.cs",
+              "RelativeToolTip": "FenetreTransaction.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T22:09:27.584Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FenetreTransaction.cs [Conception]",
+              "DocumentMoniker": "C:\\Users\\charr\\winform\\AppliBoursoBank\\FenetreTransaction.cs",
+              "RelativeDocumentMoniker": "FenetreTransaction.cs",
+              "ToolTip": "C:\\Users\\charr\\winform\\AppliBoursoBank\\FenetreTransaction.cs [Conception]",
+              "RelativeToolTip": "FenetreTransaction.cs [Conception]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T22:07:07.766Z",
+              "EditorCaption": " [Conception]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs [Design]",
+              "Title": "Form1.cs [Conception]",
               "DocumentMoniker": "C:\\Users\\charr\\winform\\AppliBoursoBank\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\charr\\winform\\AppliBoursoBank\\Form1.cs [Design]",
-              "RelativeToolTip": "Form1.cs [Design]",
+              "ToolTip": "C:\\Users\\charr\\winform\\AppliBoursoBank\\Form1.cs [Conception]",
+              "RelativeToolTip": "Form1.cs [Conception]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T03:46:13.32Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-11-22T17:31:48.668Z",
+              "EditorCaption": " [Conception]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "C:\\Users\\charr\\winform\\AppliBoursoBank\\Transaction.cs",
+              "RelativeDocumentMoniker": "Transaction.cs",
+              "ToolTip": "C:\\Users\\charr\\winform\\AppliBoursoBank\\Transaction.cs",
+              "RelativeToolTip": "Transaction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-17T22:13:00.892Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\charr\\winform\\AppliBoursoBank\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\charr\\winform\\AppliBoursoBank\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T16:17:23.266Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Compte.cs",
+              "DocumentMoniker": "C:\\Users\\charr\\winform\\AppliBoursoBank\\Compte.cs",
+              "RelativeDocumentMoniker": "Compte.cs",
+              "ToolTip": "C:\\Users\\charr\\winform\\AppliBoursoBank\\Compte.cs",
+              "RelativeToolTip": "Compte.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-17T22:07:56.597Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\charr\\winform\\AppliBoursoBank\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "Form1.Designer.cs",
+              "ToolTip": "C:\\Users\\charr\\winform\\AppliBoursoBank\\Form1.Designer.cs",
+              "RelativeToolTip": "Form1.Designer.cs",
+              "ViewState": "AgIAAD0CAAAAAAAAAAAYwD0CAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-17T21:45:35.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Controleur.cs",
+              "DocumentMoniker": "C:\\Users\\charr\\winform\\AppliBoursoBank\\Controleur.cs",
+              "RelativeDocumentMoniker": "Controleur.cs",
+              "ToolTip": "C:\\Users\\charr\\winform\\AppliBoursoBank\\Controleur.cs",
+              "RelativeToolTip": "Controleur.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-17T22:46:24.771Z"
             }
           ]
         }
