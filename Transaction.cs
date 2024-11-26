@@ -18,15 +18,21 @@
         public string Destinataire { get; private set; }
         public string Etat { get; private set; }
 
+        public string Description  { get; private set; } 
+        
+        public string ModeTransaction { get; private set; }
+
         public Categorie Categorie { get; private set; }
 
-        public Transaction(decimal montant, string dest, string etat, Categorie categorie)
+        public Transaction(DateTime date, decimal montant, string dest, string etat, Categorie categorie, string modeTransaction, string description)
         {
-            Date = DateTime.Now;
+            Date = date;
             Montant = montant;
             Destinataire = dest;
             Etat = etat;
             Categorie = categorie;
+            ModeTransaction = modeTransaction;
+            Description = description;
         }
 
     }

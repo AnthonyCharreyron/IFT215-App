@@ -1,4 +1,6 @@
-﻿namespace AppliBoursoBank
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace AppliBoursoBank
 {
 
     public class Compte
@@ -17,16 +19,16 @@
         }
 
 
-        public void Deposer(decimal montant, string destinataire = "Anonyme", string etat = "En cours", Categorie categorie = Categorie.Autre)
+        public void Deposer(DateTime date, decimal montant, string destinataire = "Anonyme", string etat = "En cours", Categorie categorie = Categorie.Autre, string modeTransaction = "Autre", string description = "")
         {
             if (montant <= 0)
                 throw new ArgumentException("Le montant doit être positif.", nameof(montant));
 
             Solde += montant;
-            Transactions.Add(new Transaction(montant, destinataire, etat, categorie));
+            Transactions.Add(new Transaction(date, montant, destinataire, etat, categorie, modeTransaction, description));
         }
 
-        public void Retirer(decimal montant, string destinataire = "Anonyme", string etat = "En cours", Categorie categorie = Categorie.Autre)
+        public void Retirer(DateTime date, decimal montant, string destinataire = "Anonyme", string etat = "En cours", Categorie categorie = Categorie.Autre, string modeTransaction = "Autre", string description = "")
         {
             if (montant <= 0)
                 throw new ArgumentException("Le montant doit être positif.", nameof(montant));
@@ -35,7 +37,7 @@
                 throw new InvalidOperationException("Fonds insuffisants pour effectuer cette opération.");
 
             Solde -= montant;
-            Transactions.Add(new Transaction(-montant, destinataire, etat, categorie));
+            Transactions.Add(new Transaction(date, -montant, destinataire, etat, categorie, modeTransaction, description));
         }
 
 

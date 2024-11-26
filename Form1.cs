@@ -11,24 +11,21 @@ namespace AppliBoursoBank
     public partial class Form1 : Form, IObserver<Compte>
     {
 
-        Controleur controleur = new Controleur();
-
-        Compte compte;
+        private Controleur controleur;
 
         // Stocker la couleur actuelle de la bordure pour chaque image
         private Dictionary<PictureBox, Color> imageBorderColors = new Dictionary<PictureBox, Color>();
 
-        public Form1()
+        public Form1(Controleur controleur)
         {
-            InitializeComponent();
-            Initialize();
-            Creer_Compte();
-            getListTransactions();
-            afficherSoldeCompte();
-            Transactions_Events(groupBox1);
-
+            this.controleur = controleur;
             controleur.Subscribe(this);
 
+            InitializeComponent();
+            Initialize();
+            getListTransactions(controleur.compte);
+            afficherSoldeCompte(controleur.compte);
+            Transactions_Events(groupBox1);
 
         }
 
@@ -48,12 +45,16 @@ namespace AppliBoursoBank
             img_budget.Paint += Img_Contour;
 
         }
-        private void AfficherFenetreTransaction(object sender, MouseEventArgs e, Control control)
-        {  
-            var fenetreTransaction = new FenetreTransaction();
-            fenetreTransaction.ShowDialog();
-        }
+        
 
+        public void TransactionClick(object sender, EventArgs e)
+        {
+            Panel elt = sender as Panel ?? (sender as Control)?.Parent as Panel;
+            if (elt != null && elt.Tag is Transaction transaction)
+            {
+                controleur.AfficherDetailsFenetreTransaction(transaction);
+            }
+        }
         private void Transactions_Events(Control control)
         {
             Panel[] panels = { p_transaction1, p_transaction2, p_transaction3 };
@@ -62,11 +63,11 @@ namespace AppliBoursoBank
                 panel.MouseEnter += (sender, e) => Hover_Panel(sender, e, true);
                 panel.MouseLeave += (sender, e) => Hover_Panel(sender, e, false);
 
-                panel.MouseClick += (sender, e) => AfficherFenetreTransaction(sender, e, panel);
+                panel.MouseClick +=TransactionClick; 
 
                 foreach (Label child in panel.Controls)
                 {
-                    child.MouseClick += (sender, e) => AfficherFenetreTransaction(sender, e, panel);
+                    child.MouseClick += TransactionClick;
 
                     child.MouseEnter += (sender, e) =>
                     {
@@ -120,20 +121,11 @@ namespace AppliBoursoBank
             throw new NotImplementedException();
         }
 
-        public void Creer_Compte()
-        {
-            compte = new Compte(1, "John Doe", 200);
-            compte.Deposer(1000, "Amazon", "Validé", Categorie.Loisirs);
-            compte.Deposer(40, "Uniprix", "En cours", Categorie.Santé);
-            compte.Retirer(60, "Amazon", "Validé", Categorie.Loisirs);
-            compte.Deposer(40, "Maxi", "Validé", Categorie.Alimentation);
-            compte.Retirer(20, "STS", "En cours", Categorie.Transports);
-        }
-
-        private void getListTransactions()
+        private void getListTransactions(Compte compte)
         {
             var dernieresTransactions = controleur.getListTransactions(compte, 3);
 
+            Panel[] panels = { p_transaction1, p_transaction2, p_transaction3 };
             // Tableau de labels existants
             Label[] categorieLabels = { l_categorie1, l_categorie2, l_categorie3 };
             Label[] destinataireLabels = { l_dest1, l_dest2, l_dest3 };
@@ -141,22 +133,24 @@ namespace AppliBoursoBank
             Label[] dateLabels = { l_date1, l_date2, l_date3 };
             Label[] etatLabels = { l_etat1, l_etat2, l_etat3 };
 
+
             // Parcourir les transactions et mettre à jour les labels
             for (int i = 0; i < dernieresTransactions.Count; i++)
             {
                 var lastTransaction = dernieresTransactions[i];
+                panels[i].Tag = lastTransaction;    // On associe une transaction à un panel
 
                 // Mettre à jour les labels
                 categorieLabels[i].Text = $"{lastTransaction.Categorie}";
                 destinataireLabels[i].Text = $"{lastTransaction.Destinataire}";
-                amountLabels[i].Text = $"{lastTransaction.Montant:C}";
+                amountLabels[i].Text = $"{lastTransaction.Montant} $";
                 amountLabels[i].ForeColor = lastTransaction.Montant < 0 ? Color.Red : Color.Green; // Couleur conditionnelle
                 dateLabels[i].Text = $"{lastTransaction.Date:dd/MM/yyyy}";
                 etatLabels[i].Text = $"{lastTransaction.Etat}";
             }
         }
 
-        private void afficherSoldeCompte()
+        private void afficherSoldeCompte(Compte compte)
         {
 
             var solde = controleur.getSoldeCompte(compte);

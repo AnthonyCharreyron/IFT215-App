@@ -8,7 +8,12 @@ namespace AppliBoursoBank
     {
         private List<IObserver<Compte>> observers = new List<IObserver<Compte>>();
 
-        private Compte compte;
+        public Compte compte;
+
+        public Controleur()
+        {
+            compte = Program.compte;
+        }
 
         public List<Transaction> getListTransactions(Compte compte, int count)
         {
@@ -20,7 +25,11 @@ namespace AppliBoursoBank
             return compte.Solde;
         }
 
-
+        public void AfficherDetailsFenetreTransaction(Transaction transaction)
+        {
+            var fenetreTransaction = new FenetreTransaction(transaction);
+            fenetreTransaction.ShowDialog();
+        }
 
         public void fireEvent()
         {
