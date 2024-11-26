@@ -1,6 +1,6 @@
 ﻿namespace AppliBoursoBank
 {
-    partial class Form1
+    partial class Accueil
     {
         /// <summary>
         ///  Required designer variable.

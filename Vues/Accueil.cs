@@ -1,4 +1,6 @@
 
+using AppliBoursoBank.Controleurs;
+using AppliBoursoBank.Modeles;
 using Microsoft.VisualBasic.Devices;
 using System;
 using System.Collections.Generic;
@@ -8,18 +10,17 @@ using System.Windows.Forms;
 
 namespace AppliBoursoBank
 {
-    public partial class Form1 : Form, IObserver<Compte>
+    public partial class Accueil : Form, IObserver<Transaction>
     {
 
-        private Controleur controleur;
+        private ControleurAccueil controleur;
 
         // Stocker la couleur actuelle de la bordure pour chaque image
         private Dictionary<PictureBox, Color> imageBorderColors = new Dictionary<PictureBox, Color>();
 
-        public Form1(Controleur controleur)
+        public Accueil(ControleurAccueil controleur)
         {
             this.controleur = controleur;
-            controleur.Subscribe(this);
 
             InitializeComponent();
             Initialize();
@@ -106,21 +107,6 @@ namespace AppliBoursoBank
         }
 
 
-        public void OnCompleted()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnError(Exception error)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnNext(Compte compte)
-        {
-            throw new NotImplementedException();
-        }
-
         private void getListTransactions(Compte compte)
         {
             var dernieresTransactions = controleur.getListTransactions(compte, 3);
@@ -155,6 +141,22 @@ namespace AppliBoursoBank
 
             var solde = controleur.getSoldeCompte(compte);
             l_solde.Text = $"{solde} $";
+        }
+
+        public void OnCompleted()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnError(Exception error)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnNext(Transaction transaction)
+        {
+            //throw new NotImplementedException();
+
         }
 
     }

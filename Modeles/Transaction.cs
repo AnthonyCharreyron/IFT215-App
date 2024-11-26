@@ -1,4 +1,4 @@
-﻿namespace AppliBoursoBank
+﻿namespace AppliBoursoBank.Modeles
 {
     public enum Categorie
     {
@@ -18,8 +18,8 @@
         public string Destinataire { get; private set; }
         public string Etat { get; private set; }
 
-        public string Description  { get; private set; } 
-        
+        public string Description { get; private set; }
+
         public string ModeTransaction { get; private set; }
 
         public Categorie Categorie { get; private set; }
@@ -33,6 +33,18 @@
             Categorie = categorie;
             ModeTransaction = modeTransaction;
             Description = description;
+        }
+
+        public void updateTransaction(Categorie categorie, string modeTransaction, string description)
+        {
+            Categorie = categorie;
+            ModeTransaction = modeTransaction;
+            Description = description;
+        }
+
+        public void contester()
+        {
+            Etat = "Contestée";
         }
 
     }

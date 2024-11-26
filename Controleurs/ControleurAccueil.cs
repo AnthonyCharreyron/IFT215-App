@@ -1,16 +1,16 @@
 ﻿
 using System;
-using static AppliBoursoBank.Form1;
+using AppliBoursoBank.Modeles;
+using static AppliBoursoBank.Accueil;
 
-namespace AppliBoursoBank
+namespace AppliBoursoBank.Controleurs
 {
-    public class Controleur : IObservable<Compte>
+    public class ControleurAccueil
     {
-        private List<IObserver<Compte>> observers = new List<IObserver<Compte>>();
 
         public Compte compte;
 
-        public Controleur()
+        public ControleurAccueil()
         {
             compte = Program.compte;
         }
@@ -29,22 +29,7 @@ namespace AppliBoursoBank
         {
             var fenetreTransaction = new FenetreTransaction(transaction);
             fenetreTransaction.ShowDialog();
-        }
 
-        public void fireEvent()
-        {
-
-            foreach (IObserver<Compte> observer in observers)
-            {
-                observer.OnNext(compte);
-            }
-        }
-
-        public IDisposable Subscribe(IObserver<Compte> observer)
-        {
-            observers.Add(observer);
-
-            return null;
         }
 
     }
