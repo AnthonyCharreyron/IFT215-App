@@ -1,0 +1,42 @@
+# Visual Studio files
+.vs/
+
+# Build output
+bin/
+obj/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build artifacts
+*.dll
+*.exe
+*.pdb
+*.cache
+*.nuget.dgspec.json
+*.nuget.g.props
+*.nuget.g.targets
+
+# Debug and release folders
+Debug/
+Release/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.dmp
+
+# Others
+*.dtbcache.v2
+*.metadata.v9.bin
+*.projects.v9.bin
+*.strings.v9.bin
+*.editorconfig
+*.csproj.FileListAbsolute.txt
+*.csproj.GenerateResource.cache
+*.csproj.AssemblyReference.cache
+*.csproj.CoreCompileInputs.cache
