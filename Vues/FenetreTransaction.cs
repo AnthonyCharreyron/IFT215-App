@@ -18,14 +18,15 @@ namespace AppliBoursoBank
         private Transaction transaction;
 
         private ControleurFenetreTransaction controleur;
-        public FenetreTransaction(Transaction transaction)
+        public FenetreTransaction(Transaction transaction, IObserver<Transaction> observer)
         {
+
             InitializeComponent();
             this.transaction = transaction;
 
             this.controleur = new ControleurFenetreTransaction(transaction);
             controleur.Subscribe(this);
-            //controleur.Subscribe(Accueil);
+            controleur.Subscribe(observer);
 
             // Initialiser la taille de la fenêtre de dialogue
             Size = new Size(500, 400);

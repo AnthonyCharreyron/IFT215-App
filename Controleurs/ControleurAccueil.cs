@@ -25,9 +25,9 @@ namespace AppliBoursoBank.Controleurs
             return compte.Solde;
         }
 
-        public void AfficherDetailsFenetreTransaction(Transaction transaction)
+        public void AfficherDetailsFenetreTransaction(Transaction transaction, IObserver<Transaction> observer)
         {
-            var fenetreTransaction = new FenetreTransaction(transaction);
+            var fenetreTransaction = new FenetreTransaction(transaction, observer);
             fenetreTransaction.ShowDialog();
 
         }

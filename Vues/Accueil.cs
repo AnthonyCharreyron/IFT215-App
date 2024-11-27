@@ -12,7 +12,7 @@ namespace AppliBoursoBank
 {
     public partial class Accueil : Form, IObserver<Transaction>
     {
-
+        IObserver<Transaction> observer;
         private ControleurAccueil controleur;
 
         // Stocker la couleur actuelle de la bordure pour chaque image
@@ -22,11 +22,16 @@ namespace AppliBoursoBank
         {
             this.controleur = controleur;
 
+            this.observer = this;
+
             InitializeComponent();
             Initialize();
-            getListTransactions(controleur.compte);
-            afficherSoldeCompte(controleur.compte);
+            AfficherTransactions(controleur.compte);
+            AfficherSoldeCompte(controleur.compte);
             Transactions_Events(groupBox1);
+
+            img_budget.MouseEnter += (sender, e) => Hover_Image(sender, e, true);
+            img_budget.MouseLeave += (sender, e) => Hover_Image(sender, e, false);
 
         }
 
@@ -53,7 +58,7 @@ namespace AppliBoursoBank
             Panel elt = sender as Panel ?? (sender as Control)?.Parent as Panel;
             if (elt != null && elt.Tag is Transaction transaction)
             {
-                controleur.AfficherDetailsFenetreTransaction(transaction);
+                controleur.AfficherDetailsFenetreTransaction(transaction, observer);
             }
         }
         private void Transactions_Events(Control control)
@@ -106,8 +111,16 @@ namespace AppliBoursoBank
             panel.Cursor = isHovering ? Cursors.Hand : Cursors.Default;
         }
 
+        private void Hover_Image(object sender, EventArgs e, bool isHovering)
+        {
+            var image = sender as PictureBox;
 
-        private void getListTransactions(Compte compte)
+            image.BackColor = isHovering ? Color.LightGray : SystemColors.Control;
+            image.Cursor = isHovering ? Cursors.Hand : Cursors.Default;
+        }
+
+
+        private void AfficherTransactions(Compte compte)
         {
             var dernieresTransactions = controleur.getListTransactions(compte, 3);
 
@@ -136,7 +149,7 @@ namespace AppliBoursoBank
             }
         }
 
-        private void afficherSoldeCompte(Compte compte)
+        private void AfficherSoldeCompte(Compte compte)
         {
 
             var solde = controleur.getSoldeCompte(compte);
@@ -156,7 +169,7 @@ namespace AppliBoursoBank
         public void OnNext(Transaction transaction)
         {
             //throw new NotImplementedException();
-
+            AfficherTransactions(controleur.compte);
         }
 
     }
