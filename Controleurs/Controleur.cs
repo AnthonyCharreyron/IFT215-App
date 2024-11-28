@@ -1,19 +1,40 @@
 ﻿
 using System;
+//using System.Transactions;
 using AppliBoursoBank.Modeles;
 using static AppliBoursoBank.Accueil;
 
 namespace AppliBoursoBank.Controleurs
 {
-    public class ControleurFenetreTransaction : IObservable<Transaction>
+    public class Controleur : IObservable<Transaction>
     {
+
         private List<IObserver<Transaction>> observers = new List<IObserver<Transaction>>();
 
         Transaction transaction;
 
-        public ControleurFenetreTransaction(Transaction transaction)
+        public Compte compte;
+
+        public Controleur()
+        {
+            compte = Program.compte;
+        }
+
+        public List<Transaction> getListTransactions(Compte compte, int count)
+        {
+            return compte.getLastsTransactions(count);
+        }
+
+        public decimal getSoldeCompte(Compte compte)
+        {
+            return compte.Solde;
+        }
+
+        public void AfficherDetailsFenetreTransaction(Transaction transaction)
         {
             this.transaction = transaction;
+            var fenetreTransaction = new FenetreTransaction(transaction, this);
+            fenetreTransaction.ShowDialog();
         }
 
         public void ModifierTransaction(Transaction transaction, string categorie, string modeTransaction, string description)
@@ -21,8 +42,6 @@ namespace AppliBoursoBank.Controleurs
             Enum.TryParse(categorie, out Categorie cat);
             transaction.updateTransaction(cat, modeTransaction, description);
             fireEvent();
-
-
         }
 
         public void contesterTransaction(Transaction transaction)
@@ -43,6 +62,15 @@ namespace AppliBoursoBank.Controleurs
         public IDisposable Subscribe(IObserver<Transaction> observer)
         {
             observers.Add(observer);
+
+            return null;
+        }
+
+        
+
+        public IDisposable unSubscribe (IObserver<Transaction> observer)
+        {
+            observers.Remove(observer);
 
             return null;
         }

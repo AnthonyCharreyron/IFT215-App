@@ -17,7 +17,7 @@ namespace AppliBoursoBank
         static void Main()
         {
             initData();
-            var controleur = new ControleurAccueil();
+            var controleur = new Controleur();
            
 
             // To customize application configuration such as set high DPI settings or default font,

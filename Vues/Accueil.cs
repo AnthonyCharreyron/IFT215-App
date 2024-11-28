@@ -12,17 +12,17 @@ namespace AppliBoursoBank
 {
     public partial class Accueil : Form, IObserver<Transaction>
     {
-        IObserver<Transaction> observer;
-        private ControleurAccueil controleur;
+        
+        private Controleur controleur;
 
         // Stocker la couleur actuelle de la bordure pour chaque image
         private Dictionary<PictureBox, Color> imageBorderColors = new Dictionary<PictureBox, Color>();
 
-        public Accueil(ControleurAccueil controleur)
+        public Accueil(Controleur controleur)
         {
             this.controleur = controleur;
+            controleur.Subscribe(this);
 
-            this.observer = this;
 
             InitializeComponent();
             Initialize();
@@ -58,7 +58,7 @@ namespace AppliBoursoBank
             Panel elt = sender as Panel ?? (sender as Control)?.Parent as Panel;
             if (elt != null && elt.Tag is Transaction transaction)
             {
-                controleur.AfficherDetailsFenetreTransaction(transaction, observer);
+                controleur.AfficherDetailsFenetreTransaction(transaction);
             }
         }
         private void Transactions_Events(Control control)

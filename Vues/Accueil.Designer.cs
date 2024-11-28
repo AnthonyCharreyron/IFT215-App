@@ -598,14 +598,16 @@
             panel14.Size = new Size(868, 498);
             panel14.TabIndex = 9;
             // 
-            // Form1
+            // Accueil
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1184, 616);
             Controls.Add(panel14);
             Controls.Add(panel2);
-            Name = "Form1";
+            MaximumSize = new Size(1202, 663);
+            MinimumSize = new Size(1202, 663);
+            Name = "Accueil";
             Text = "Form1";
             groupBox1.ResumeLayout(false);
             p_transaction3.ResumeLayout(false);

@@ -17,16 +17,17 @@ namespace AppliBoursoBank
     {
         private Transaction transaction;
 
-        private ControleurFenetreTransaction controleur;
-        public FenetreTransaction(Transaction transaction, IObserver<Transaction> observer)
+        private Controleur controleur;
+
+        public FenetreTransaction(Transaction transaction, Controleur controleur)
         {
 
             InitializeComponent();
+            this.controleur = controleur;
             this.transaction = transaction;
-
-            this.controleur = new ControleurFenetreTransaction(transaction);
             controleur.Subscribe(this);
-            controleur.Subscribe(observer);
+
+            this.FormClosed += new FormClosedEventHandler(Form_FormClosed);
 
             // Initialiser la taille de la fenêtre de dialogue
             Size = new Size(500, 400);
@@ -65,7 +66,7 @@ namespace AppliBoursoBank
             bool modif = (b_modifsave.Tag.ToString() == "modifier");
 
             if (!modif) { // enregistrement des nouvelles données
-                controleur.ModifierTransaction(this.transaction, cb_categorie.SelectedItem.ToString(), cb_modepaiement.SelectedItem.ToString(), tb_description.Text);
+                this.controleur.ModifierTransaction(this.transaction, cb_categorie.SelectedItem.ToString(), cb_modepaiement.SelectedItem.ToString(), tb_description.Text);
             }
 
             l_categorie.Visible = !modif ;
@@ -106,9 +107,14 @@ namespace AppliBoursoBank
 
         public void ContesterTransaction_Click(object sender, EventArgs e)
         {
-            controleur.contesterTransaction(this.transaction);
+            this.controleur.contesterTransaction(this.transaction);
             b_contester.Visible = false;
             l_date_etat.ForeColor = Color.LightCoral;
+        }
+
+        public void Form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.controleur.unSubscribe(this);
         }
 
         public void OnCompleted()
