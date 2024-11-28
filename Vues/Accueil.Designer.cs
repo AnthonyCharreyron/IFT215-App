@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Accueil));
             label1 = new Label();
             groupBox1 = new GroupBox();
             panel12 = new Panel();
@@ -51,6 +52,7 @@
             l_dest1 = new Label();
             l_solde = new Label();
             panel2 = new Panel();
+            pictureBox2 = new PictureBox();
             panel11 = new Panel();
             panel10 = new Panel();
             panel9 = new Panel();
@@ -76,11 +78,13 @@
             panel13 = new Panel();
             panel14 = new Panel();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            linkLabel1 = new LinkLabel();
             groupBox1.SuspendLayout();
             p_transaction3.SuspendLayout();
             p_transaction2.SuspendLayout();
             p_transaction1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)img_budget).BeginInit();
@@ -320,14 +324,15 @@
             l_solde.ForeColor = Color.DodgerBlue;
             l_solde.Location = new Point(442, 14);
             l_solde.Name = "l_solde";
-            l_solde.Size = new Size(72, 31);
+            l_solde.Size = new Size(108, 31);
             l_solde.TabIndex = 4;
-            l_solde.Text = "200 $";
+            l_solde.Text = "Montant";
             // 
             // panel2
             // 
             panel2.AutoSize = true;
             panel2.BackColor = Color.SkyBlue;
+            panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(panel11);
             panel2.Controls.Add(panel10);
             panel2.Controls.Add(panel9);
@@ -344,8 +349,17 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1184, 78);
+            panel2.Size = new Size(1184, 80);
             panel2.TabIndex = 5;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(1100, 7);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(70, 70);
+            pictureBox2.TabIndex = 13;
+            pictureBox2.TabStop = false;
             // 
             // panel11
             // 
@@ -468,12 +482,13 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.BackColor = Color.LightCyan;
             label4.Font = new Font("Segoe UI", 10.8F);
             label4.ForeColor = Color.DarkBlue;
-            label4.Location = new Point(188, 8);
+            label4.Location = new Point(188, -1);
             label4.Name = "label4";
-            label4.Padding = new Padding(10, 20, 10, 20);
-            label4.Size = new Size(87, 65);
+            label4.Padding = new Padding(10, 28, 10, 28);
+            label4.Size = new Size(87, 81);
             label4.TabIndex = 0;
             label4.Text = "Accueil";
             // 
@@ -598,11 +613,23 @@
             panel14.Size = new Size(868, 498);
             panel14.TabIndex = 9;
             // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.LinkColor = Color.Black;
+            linkLabel1.Location = new Point(57, 92);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(63, 20);
+            linkLabel1.TabIndex = 10;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Accueil/";
+            // 
             // Accueil
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1184, 616);
+            Controls.Add(linkLabel1);
             Controls.Add(panel14);
             Controls.Add(panel2);
             MaximumSize = new Size(1202, 663);
@@ -618,6 +645,7 @@
             p_transaction1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
@@ -682,5 +710,7 @@
         private Panel panel13;
         private Panel panel14;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private PictureBox pictureBox2;
+        private LinkLabel linkLabel1;
     }
 }

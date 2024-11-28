@@ -118,17 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="infocompte" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\infocompte.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="infocarte" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\infocarte.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="echange" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\echange.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="echange1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\echange1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="infocompte" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\infocompte.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="gestionbudget" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gestionbudget.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,7 +133,13 @@
   <data name="infocompte1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\infocompte1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="echange1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\echange1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="utilisateur" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\utilisateur.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

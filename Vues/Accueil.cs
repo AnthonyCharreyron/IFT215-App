@@ -12,7 +12,7 @@ namespace AppliBoursoBank
 {
     public partial class Accueil : Form, IObserver<Transaction>
     {
-        
+
         private Controleur controleur;
 
         // Stocker la couleur actuelle de la bordure pour chaque image
@@ -51,7 +51,7 @@ namespace AppliBoursoBank
             img_budget.Paint += Img_Contour;
 
         }
-        
+
 
         public void TransactionClick(object sender, EventArgs e)
         {
@@ -69,7 +69,7 @@ namespace AppliBoursoBank
                 panel.MouseEnter += (sender, e) => Hover_Panel(sender, e, true);
                 panel.MouseLeave += (sender, e) => Hover_Panel(sender, e, false);
 
-                panel.MouseClick +=TransactionClick; 
+                panel.MouseClick += TransactionClick;
 
                 foreach (Label child in panel.Controls)
                 {
@@ -106,7 +106,7 @@ namespace AppliBoursoBank
         private void Hover_Panel(object sender, EventArgs e, bool isHovering)
         {
             var panel = sender as Panel;
-            
+
             panel.BackColor = isHovering ? Color.LightGray : SystemColors.Control;
             panel.Cursor = isHovering ? Cursors.Hand : Cursors.Default;
         }
