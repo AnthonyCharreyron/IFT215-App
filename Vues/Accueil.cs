@@ -32,6 +32,7 @@ namespace AppliBoursoBank
 
             img_budget.MouseEnter += (sender, e) => Hover_Image(sender, e, true);
             img_budget.MouseLeave += (sender, e) => Hover_Image(sender, e, false);
+            img_budget.MouseClick += GestionBudgetClick;
 
         }
 
@@ -61,6 +62,12 @@ namespace AppliBoursoBank
                 controleur.AfficherDetailsFenetreTransaction(transaction);
             }
         }
+
+        public void GestionBudgetClick(object sender, EventArgs e)
+        {
+             controleur.AfficherFenetreGestionBudget();
+        }
+
         private void Transactions_Events(Control control)
         {
             Panel[] panels = { p_transaction1, p_transaction2, p_transaction3 };

@@ -37,6 +37,13 @@ namespace AppliBoursoBank.Controleurs
             fenetreTransaction.ShowDialog();
         }
 
+        
+        public void AfficherFenetreGestionBudget()
+        {
+            var fenetreBudget = new GestionBudget(this);
+            fenetreBudget.Show();
+        }
+
         public void ModifierTransaction(Transaction transaction, string categorie, string modeTransaction, string description)
         {
             Enum.TryParse(categorie, out Categorie cat);
@@ -48,6 +55,17 @@ namespace AppliBoursoBank.Controleurs
         {
             transaction.contester();
             fireEvent();
+        }
+
+        public List<Transaction> getListMonthlyTransactionByType(Compte compte, int count, bool isDepense)
+        {
+            return compte.GetCurrentMonthTransactionByType(count, isDepense);
+        }
+
+
+        public IEnumerable<(Categorie Categorie, decimal Total)> GetDepensesParCategorie(Compte compte)
+        {
+            return compte.GetDepensesParCategorie(); // Totaliser les montants
         }
 
         public void fireEvent()
