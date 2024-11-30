@@ -59,7 +59,6 @@
             panel8 = new Panel();
             panel7 = new Panel();
             panel6 = new Panel();
-            pictureBox1 = new PictureBox();
             label9 = new Label();
             label8 = new Label();
             label7 = new Label();
@@ -79,19 +78,20 @@
             panel14 = new Panel();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             linkLabel1 = new LinkLabel();
+            pictureBox3 = new PictureBox();
             groupBox1.SuspendLayout();
             p_transaction3.SuspendLayout();
             p_transaction2.SuspendLayout();
             p_transaction1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)img_budget).BeginInit();
             ((System.ComponentModel.ISupportInitialize)img_infocarte).BeginInit();
             ((System.ComponentModel.ISupportInitialize)img_infocompte).BeginInit();
             ((System.ComponentModel.ISupportInitialize)img_virement).BeginInit();
             panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -332,6 +332,7 @@
             // 
             panel2.AutoSize = true;
             panel2.BackColor = Color.SkyBlue;
+            panel2.Controls.Add(pictureBox3);
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(panel11);
             panel2.Controls.Add(panel10);
@@ -339,7 +340,6 @@
             panel2.Controls.Add(panel8);
             panel2.Controls.Add(panel7);
             panel2.Controls.Add(panel6);
-            panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(label9);
             panel2.Controls.Add(label8);
             panel2.Controls.Add(label7);
@@ -349,7 +349,7 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1184, 80);
+            panel2.Size = new Size(1184, 84);
             panel2.TabIndex = 5;
             // 
             // pictureBox2
@@ -408,16 +408,6 @@
             panel6.Name = "panel6";
             panel6.Size = new Size(1, 70);
             panel6.TabIndex = 7;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.logo;
-            pictureBox1.Location = new Point(9, 8);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(177, 62);
-            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox1.TabIndex = 6;
-            pictureBox1.TabStop = false;
             // 
             // label9
             // 
@@ -485,7 +475,7 @@
             label4.BackColor = Color.LightCyan;
             label4.Font = new Font("Segoe UI", 10.8F);
             label4.ForeColor = Color.DarkBlue;
-            label4.Location = new Point(188, -1);
+            label4.Location = new Point(188, 1);
             label4.Name = "label4";
             label4.Padding = new Padding(10, 28, 10, 28);
             label4.Size = new Size(87, 81);
@@ -624,6 +614,16 @@
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Accueil/";
             // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = Properties.Resources.logo;
+            pictureBox3.Location = new Point(2, 3);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(183, 78);
+            pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox3.TabIndex = 11;
+            pictureBox3.TabStop = false;
+            // 
             // Accueil
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -646,7 +646,6 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)img_budget).EndInit();
@@ -655,6 +654,7 @@
             ((System.ComponentModel.ISupportInitialize)img_virement).EndInit();
             panel14.ResumeLayout(false);
             panel14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -699,7 +699,6 @@
         private Label l_categorie2;
         private Label l_categorie1;
         private Label l_categorie3;
-        private PictureBox pictureBox1;
         private Panel panel6;
         private Panel panel8;
         private Panel panel7;
@@ -712,5 +711,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private PictureBox pictureBox2;
         private LinkLabel linkLabel1;
+        private PictureBox pictureBox3;
     }
 }

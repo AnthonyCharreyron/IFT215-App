@@ -37,12 +37,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionBudget));
             label1 = new Label();
             panel1 = new Panel();
+            l_month = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            l_totdepenses = new Label();
+            label10 = new Label();
             label2 = new Label();
             flp_depenses = new FlowLayoutPanel();
             chartDepenses = new System.Windows.Forms.DataVisualization.Charting.Chart();
             tabPage2 = new TabPage();
+            l_totrecettes = new Label();
+            label12 = new Label();
             label3 = new Label();
             flp_recettes = new FlowLayoutPanel();
             chartRecettes = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -54,14 +59,16 @@
             panel8 = new Panel();
             panel7 = new Panel();
             panel6 = new Panel();
-            pictureBox1 = new PictureBox();
+            p_logo = new PictureBox();
             label9 = new Label();
             label8 = new Label();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
-            label4 = new Label();
+            l_menuaccueil = new Label();
+            link_accueil = new LinkLabel();
             linkLabel1 = new LinkLabel();
+            linkLabel2 = new LinkLabel();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -70,7 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)chartRecettes).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)p_logo).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -78,7 +85,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.DodgerBlue;
-            label1.Location = new Point(512, 126);
+            label1.Location = new Point(372, -1);
             label1.Name = "label1";
             label1.Size = new Size(187, 28);
             label1.TabIndex = 1;
@@ -88,12 +95,26 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(l_month);
             panel1.Controls.Add(tabControl1);
+            panel1.Controls.Add(label1);
             panel1.Location = new Point(133, 126);
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
             panel1.Size = new Size(929, 485);
             panel1.TabIndex = 2;
+            // 
+            // l_month
+            // 
+            l_month.AutoSize = true;
+            l_month.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            l_month.ForeColor = Color.MediumVioletRed;
+            l_month.Location = new Point(428, 30);
+            l_month.Name = "l_month";
+            l_month.Size = new Size(42, 20);
+            l_month.TabIndex = 5;
+            l_month.Text = "Mois";
+            l_month.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tabControl1
             // 
@@ -110,6 +131,8 @@
             // tabPage1
             // 
             tabPage1.BackColor = Color.White;
+            tabPage1.Controls.Add(l_totdepenses);
+            tabPage1.Controls.Add(label10);
             tabPage1.Controls.Add(label2);
             tabPage1.Controls.Add(flp_depenses);
             tabPage1.Controls.Add(chartDepenses);
@@ -121,6 +144,30 @@
             tabPage1.Size = new Size(862, 381);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Dépenses";
+            // 
+            // l_totdepenses
+            // 
+            l_totdepenses.AutoSize = true;
+            l_totdepenses.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            l_totdepenses.ForeColor = Color.MediumVioletRed;
+            l_totdepenses.Location = new Point(167, 22);
+            l_totdepenses.Name = "l_totdepenses";
+            l_totdepenses.Size = new Size(67, 20);
+            l_totdepenses.TabIndex = 9;
+            l_totdepenses.Text = "montant";
+            l_totdepenses.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.ForeColor = Color.MediumVioletRed;
+            label10.Location = new Point(60, 22);
+            label10.Name = "label10";
+            label10.Size = new Size(111, 20);
+            label10.TabIndex = 6;
+            label10.Text = "Total dépensé :";
+            label10.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -159,6 +206,8 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(l_totrecettes);
+            tabPage2.Controls.Add(label12);
             tabPage2.Controls.Add(label3);
             tabPage2.Controls.Add(flp_recettes);
             tabPage2.Controls.Add(chartRecettes);
@@ -170,6 +219,30 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Recettes";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // l_totrecettes
+            // 
+            l_totrecettes.AutoSize = true;
+            l_totrecettes.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            l_totrecettes.ForeColor = Color.MediumVioletRed;
+            l_totrecettes.Location = new Point(154, 22);
+            l_totrecettes.Name = "l_totrecettes";
+            l_totrecettes.Size = new Size(67, 20);
+            l_totrecettes.TabIndex = 11;
+            l_totrecettes.Text = "montant";
+            l_totrecettes.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.ForeColor = Color.MediumVioletRed;
+            label12.Location = new Point(74, 22);
+            label12.Name = "label12";
+            label12.Size = new Size(84, 20);
+            label12.TabIndex = 10;
+            label12.Text = "Total reçu :";
+            label12.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
@@ -216,17 +289,17 @@
             panel2.Controls.Add(panel8);
             panel2.Controls.Add(panel7);
             panel2.Controls.Add(panel6);
-            panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(p_logo);
             panel2.Controls.Add(label9);
             panel2.Controls.Add(label8);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label5);
-            panel2.Controls.Add(label4);
+            panel2.Controls.Add(l_menuaccueil);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1186, 80);
+            panel2.Size = new Size(1186, 84);
             panel2.TabIndex = 6;
             // 
             // pictureBox2
@@ -286,15 +359,15 @@
             panel6.Size = new Size(1, 70);
             panel6.TabIndex = 7;
             // 
-            // pictureBox1
+            // p_logo
             // 
-            pictureBox1.Image = Properties.Resources.logo;
-            pictureBox1.Location = new Point(9, 8);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(177, 62);
-            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox1.TabIndex = 6;
-            pictureBox1.TabStop = false;
+            p_logo.Image = Properties.Resources.logo;
+            p_logo.Location = new Point(2, 3);
+            p_logo.Name = "p_logo";
+            p_logo.Size = new Size(183, 78);
+            p_logo.SizeMode = PictureBoxSizeMode.CenterImage;
+            p_logo.TabIndex = 6;
+            p_logo.TabStop = false;
             // 
             // label9
             // 
@@ -338,7 +411,7 @@
             label6.BackColor = Color.LightCyan;
             label6.Font = new Font("Segoe UI", 10.8F);
             label6.ForeColor = Color.DarkBlue;
-            label6.Location = new Point(421, -1);
+            label6.Location = new Point(421, 1);
             label6.Name = "label6";
             label6.Padding = new Padding(12, 28, 12, 28);
             label6.Size = new Size(99, 81);
@@ -357,43 +430,69 @@
             label5.TabIndex = 1;
             label5.Text = "Mes comptes";
             // 
-            // label4
+            // l_menuaccueil
             // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.SkyBlue;
-            label4.Font = new Font("Segoe UI", 10.8F);
-            label4.ForeColor = Color.DarkBlue;
-            label4.Location = new Point(188, -1);
-            label4.Name = "label4";
-            label4.Padding = new Padding(10, 28, 10, 28);
-            label4.Size = new Size(87, 81);
-            label4.TabIndex = 0;
-            label4.Text = "Accueil";
+            l_menuaccueil.AutoSize = true;
+            l_menuaccueil.BackColor = Color.SkyBlue;
+            l_menuaccueil.Font = new Font("Segoe UI", 10.8F);
+            l_menuaccueil.ForeColor = Color.DarkBlue;
+            l_menuaccueil.Location = new Point(188, -1);
+            l_menuaccueil.Name = "l_menuaccueil";
+            l_menuaccueil.Padding = new Padding(10, 28, 10, 28);
+            l_menuaccueil.Size = new Size(87, 81);
+            l_menuaccueil.TabIndex = 0;
+            l_menuaccueil.Text = "Accueil";
+            // 
+            // link_accueil
+            // 
+            link_accueil.AutoSize = true;
+            link_accueil.LinkColor = Color.Black;
+            link_accueil.Location = new Point(57, 92);
+            link_accueil.Name = "link_accueil";
+            link_accueil.Size = new Size(63, 20);
+            link_accueil.TabIndex = 11;
+            link_accueil.TabStop = true;
+            link_accueil.Text = "Accueil/";
             // 
             // linkLabel1
             // 
             linkLabel1.AutoSize = true;
             linkLabel1.LinkColor = Color.Black;
-            linkLabel1.Location = new Point(57, 92);
+            linkLabel1.Location = new Point(180, 92);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(63, 20);
-            linkLabel1.TabIndex = 11;
+            linkLabel1.Size = new Size(142, 20);
+            linkLabel1.TabIndex = 12;
             linkLabel1.TabStop = true;
-            linkLabel1.Text = "Accueil/";
+            linkLabel1.Text = "Gestion budgétaire/";
+            // 
+            // linkLabel2
+            // 
+            linkLabel2.AutoSize = true;
+            linkLabel2.LinkColor = Color.Black;
+            linkLabel2.Location = new Point(116, 92);
+            linkLabel2.Name = "linkLabel2";
+            linkLabel2.Size = new Size(68, 20);
+            linkLabel2.TabIndex = 13;
+            linkLabel2.TabStop = true;
+            linkLabel2.Text = "Services/";
             // 
             // GestionBudget
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1186, 616);
+            Controls.Add(linkLabel2);
             Controls.Add(linkLabel1);
+            Controls.Add(link_accueil);
             Controls.Add(panel2);
-            Controls.Add(label1);
             Controls.Add(panel1);
             Margin = new Padding(2);
+            MaximumSize = new Size(1204, 663);
+            MinimumSize = new Size(1204, 663);
             Name = "GestionBudget";
             Text = "Form2";
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
@@ -404,7 +503,7 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)p_logo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -427,16 +526,23 @@
         private Panel panel8;
         private Panel panel7;
         private Panel panel6;
-        private PictureBox pictureBox1;
+        private PictureBox p_logo;
         private Label label9;
         private Label label8;
         private Label label7;
         private Label label6;
         private Label label5;
-        private Label label4;
-        private LinkLabel linkLabel1;
+        private Label l_menuaccueil;
+        private LinkLabel link_accueil;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartRecettes;
         private Label label3;
         private FlowLayoutPanel flp_recettes;
+        private Label l_month;
+        private Label label10;
+        private Label l_totdepenses;
+        private Label l_totrecettes;
+        private Label label12;
+        private LinkLabel linkLabel1;
+        private LinkLabel linkLabel2;
     }
 }

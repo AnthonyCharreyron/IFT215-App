@@ -66,6 +66,7 @@ namespace AppliBoursoBank
         public void GestionBudgetClick(object sender, EventArgs e)
         {
              controleur.AfficherFenetreGestionBudget();
+            this.Hide();
         }
 
         private void Transactions_Events(Control control)

@@ -20,6 +20,7 @@ namespace AppliBoursoBank
         public GestionBudget(Controleur controleur)
         {
             this.controleur = controleur;
+            controleur.Subscribe(this);
 
             InitializeComponent();
             getListTransactionsByType(controleur.compte, true);
@@ -28,26 +29,24 @@ namespace AppliBoursoBank
             DisplayPieChart(controleur.compte, true);
             DisplayPieChart(controleur.compte, false);
 
-            controleur.Subscribe(this);
+            string mois = DateTime.Now.ToString("MMMM");
+            l_month.Text = char.ToUpper(mois[0]) + mois.Substring(1);
+
+            l_menuaccueil.Click += Return_Accueil;
+            p_logo.Click += Return_Accueil;
+            link_accueil.Click += Return_Accueil;
+            l_menuaccueil.MouseEnter += (sender, e) => Hover_Control(sender, e, true, Color.SkyBlue);
+            l_menuaccueil.MouseLeave += (sender, e) => Hover_Control(sender, e, false, Color.SkyBlue);
+            p_logo.MouseEnter += (sender, e) => { Cursor = Cursors.Hand; };
+            p_logo.MouseLeave += (sender, e) => { Cursor = Cursors.Default; };
+
+
         }
 
-        public void OnCompleted()
+        public void Return_Accueil(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-        }
-
-        public void OnError(Exception error)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnNext(Transaction transaction)
-        {
-            //throw new NotImplementedException();
-            getListTransactionsByType(controleur.compte, true);
-            getListTransactionsByType(controleur.compte, false);
-            DisplayPieChart(controleur.compte, true);
-            DisplayPieChart(controleur.compte, false);
+            controleur.AfficherAccueil();
+            this.Close();
         }
 
         public void TransactionClick(object sender, EventArgs e)
@@ -72,16 +71,17 @@ namespace AppliBoursoBank
             var depenses = controleur.getListMonthlyTransactionByType(compte, isDepense);
 
             String[] nomslabel = { "l_montant", "l_destinataire", "l_date", "l_categorie" };
-            int[,] coordonnees = { { 4, 3 },{ 80, 3 },{ 236, 3 }, {300, 3 } };
+            int[,] coordonnees = { { 4, 3 }, { 80, 3 }, { 236, 3 }, { 300, 3 } };
 
             var flp = isDepense ? flp_depenses : flp_recettes;
             flp.Controls.Clear();
 
-            for (int i = 0; i < depenses.Count; i++) {
+            for (int i = 0; i < depenses.Count; i++)
+            {
 
                 var t = depenses[i];
 
-                String[] values = { t.Montant.ToString() + " $", t.Destinataire, t.Date.ToString("dd/MM"), t.Categorie.ToString()};
+                String[] values = { t.Montant.ToString() + " $", t.Destinataire, t.Date.ToString("dd/MM"), t.Categorie.ToString() };
                 var color = Color.Transparent;
                 // création du panel pour la transaction i
                 Panel panel = new Panel();
@@ -96,12 +96,13 @@ namespace AppliBoursoBank
                 panel.MouseClick += TransactionClick;
                 panel.MouseEnter += (sender, e) => Hover_Control(sender, e, true, color);
                 panel.MouseLeave += (sender, e) => Hover_Control(sender, e, false, color);
-                
+
                 // ajout de l transaction i au flowLayoutPanel correspondant
                 flp.Controls.Add(panel);
 
                 //création des Labels pour chaque élément de la transaction
-                for (int j = 0; j < nomslabel.Length; j++) {
+                for (int j = 0; j < nomslabel.Length; j++)
+                {
                     Label label = new Label();
                     label.AutoSize = true;
                     label.Location = new Point(coordonnees[j, 0], coordonnees[j, 1]);
@@ -118,14 +119,14 @@ namespace AppliBoursoBank
                     {
                         panel.BackColor = color;
                         label.Cursor = Cursors.Default;
-                        
+
                     };
                     panel.Controls.Add(label); // ajout du label au panel de la transaction
-                }       
+                }
             }
         }
 
-        private void DisplayPieChart(Compte compte,bool isDepense)
+        private void DisplayPieChart(Compte compte, bool isDepense)
         {
             // Regrouper les dépenses par catégorie
             var data = controleur.GetTransactionsParCategorie(compte, isDepense);
@@ -137,7 +138,7 @@ namespace AppliBoursoBank
             chart.Titles.Clear();
 
             // Ajouter un titre
-            chart.Titles.Add(isDepense ? "Répartition des dépenses par catégorie" : "Répartition des recettes par catégorie" );
+            chart.Titles.Add(isDepense ? "Répartition des dépenses par catégorie" : "Répartition des recettes par catégorie");
 
             // Ajouter une série
             var series = new System.Windows.Forms.DataVisualization.Charting.Series
@@ -150,6 +151,9 @@ namespace AppliBoursoBank
             chart.Series.Add(series);
 
             decimal totalDepenses = data.Sum(item => item.Total);
+
+            var label = isDepense ? l_totdepenses : l_totrecettes;
+            label.Text = totalDepenses.ToString()+" $";
 
             // Ajouter les données au graphique
             foreach (var item in data)
@@ -164,14 +168,32 @@ namespace AppliBoursoBank
                     YValues = new[] { (double)item.Total },
                     LegendText = item.Categorie.ToString(),
                     Label = pourcentage.ToString("0.0") + "%",
-               
+
                 };
                 point.LabelForeColor = Color.White;
                 series.Points.Add(point);
-               
+
             }
         }
 
-     
+        public void OnCompleted()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnError(Exception error)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnNext(Transaction transaction)
+        {
+            //throw new NotImplementedException();
+            getListTransactionsByType(controleur.compte, true);
+            getListTransactionsByType(controleur.compte, false);
+            DisplayPieChart(controleur.compte, true);
+            DisplayPieChart(controleur.compte, false);
+        }
+
     }
 }

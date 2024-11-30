@@ -59,6 +59,7 @@ namespace AppliBoursoBank.Modeles
         {
             IEnumerable<IGrouping<Categorie, Transaction>> liste = Transactions
                 .Where(t => isDepense ? t.Montant < 0 : t.Montant >=0) // Filtrer uniquement les dépenses
+                .Where(t => t.Date.Month == DateTime.Now.Month)
                 .GroupBy(t => t.Categorie); // Grouper par catégorie
 
             return liste.Select(group => (group.Key, group.Sum(t => Math.Abs(t.Montant))));

@@ -2,6 +2,7 @@
 using System;
 //using System.Transactions;
 using AppliBoursoBank.Modeles;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static AppliBoursoBank.Accueil;
 
 namespace AppliBoursoBank.Controleurs
@@ -14,11 +15,20 @@ namespace AppliBoursoBank.Controleurs
         Transaction transaction;
 
         public Compte compte;
+        private Form accueil;
 
         public Controleur()
         {
             compte = Program.compte;
+            this.accueil = new Accueil(this);
+
         }
+
+        public void LancerApplication()
+        {
+            Application.Run(accueil);
+        }
+
 
         public List<Transaction> getListTransactions(Compte compte, int count)
         {
@@ -42,6 +52,11 @@ namespace AppliBoursoBank.Controleurs
         {
             var fenetreBudget = new GestionBudget(this);
             fenetreBudget.Show();
+        }
+
+        public void AfficherAccueil()
+        {
+            accueil.Show();
         }
 
         public void ModifierTransaction(Transaction transaction, string categorie, string modeTransaction, string description)
@@ -85,7 +100,6 @@ namespace AppliBoursoBank.Controleurs
         }
 
         
-
         public IDisposable unSubscribe (IObserver<Transaction> observer)
         {
             observers.Remove(observer);

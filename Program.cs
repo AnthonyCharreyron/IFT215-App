@@ -16,15 +16,13 @@ namespace AppliBoursoBank
         [STAThread]
         static void Main()
         {
-            initData();
-            var controleur = new Controleur();
-           
-
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            Application.Run(new Accueil(controleur));
+            initData();
+            var controleur = new Controleur();
+            controleur.LancerApplication();
         }
 
         static void initData()
