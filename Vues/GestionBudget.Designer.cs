@@ -31,30 +31,46 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionBudget));
             label1 = new Label();
             panel1 = new Panel();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            label2 = new Label();
+            flp_depenses = new FlowLayoutPanel();
             chartDepenses = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            l_dep_dest2 = new Label();
-            l_dep_dest1 = new Label();
-            l_dep_categorie2 = new Label();
-            l_dep_categorie1 = new Label();
-            l_dep_montant2 = new Label();
-            l_dep_montant1 = new Label();
             tabPage2 = new TabPage();
-            l_depot_dest2 = new Label();
-            l_depot_dest1 = new Label();
-            l_depot_categorie2 = new Label();
-            l_depot_categorie1 = new Label();
-            l_depot_montant2 = new Label();
-            l_depot_montant1 = new Label();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            label3 = new Label();
+            flp_recettes = new FlowLayoutPanel();
+            chartRecettes = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            panel2 = new Panel();
+            pictureBox2 = new PictureBox();
+            panel11 = new Panel();
+            panel10 = new Panel();
+            panel9 = new Panel();
+            panel8 = new Panel();
+            panel7 = new Panel();
+            panel6 = new Panel();
+            pictureBox1 = new PictureBox();
+            label9 = new Label();
+            label8 = new Label();
+            label7 = new Label();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            linkLabel1 = new LinkLabel();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chartDepenses).BeginInit();
             tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartRecettes).BeginInit();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -73,10 +89,10 @@
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(tabControl1);
-            panel1.Location = new Point(162, 120);
+            panel1.Location = new Point(133, 126);
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(880, 400);
+            panel1.Size = new Size(929, 485);
             panel1.TabIndex = 2;
             // 
             // tabControl1
@@ -88,27 +104,41 @@
             tabControl1.Margin = new Padding(2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(818, 334);
+            tabControl1.Size = new Size(870, 414);
             tabControl1.TabIndex = 4;
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(flowLayoutPanel1);
+            tabPage1.BackColor = Color.White;
+            tabPage1.Controls.Add(label2);
+            tabPage1.Controls.Add(flp_depenses);
             tabPage1.Controls.Add(chartDepenses);
-            tabPage1.Controls.Add(l_dep_dest2);
-            tabPage1.Controls.Add(l_dep_dest1);
-            tabPage1.Controls.Add(l_dep_categorie2);
-            tabPage1.Controls.Add(l_dep_categorie1);
-            tabPage1.Controls.Add(l_dep_montant2);
-            tabPage1.Controls.Add(l_dep_montant1);
+            tabPage1.ForeColor = Color.Black;
             tabPage1.Location = new Point(4, 29);
             tabPage1.Margin = new Padding(2);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(2);
-            tabPage1.Size = new Size(810, 301);
+            tabPage1.Size = new Size(862, 381);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Dépenses";
-            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(528, 22);
+            label2.Name = "label2";
+            label2.Size = new Size(160, 20);
+            label2.TabIndex = 8;
+            label2.Text = "Liste des transactions :";
+            // 
+            // flp_depenses
+            // 
+            flp_depenses.AutoScroll = true;
+            flp_depenses.BackColor = Color.Transparent;
+            flp_depenses.Location = new Point(379, 65);
+            flp_depenses.Name = "flp_depenses";
+            flp_depenses.Size = new Size(448, 286);
+            flp_depenses.TabIndex = 7;
             // 
             // chartDepenses
             // 
@@ -116,171 +146,252 @@
             chartDepenses.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             chartDepenses.Legends.Add(legend1);
-            chartDepenses.Location = new Point(62, 20);
+            chartDepenses.Location = new Point(5, 55);
             chartDepenses.Margin = new Padding(2);
             chartDepenses.Name = "chartDepenses";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             chartDepenses.Series.Add(series1);
-            chartDepenses.Size = new Size(306, 267);
+            chartDepenses.Size = new Size(369, 322);
             chartDepenses.TabIndex = 6;
             chartDepenses.Text = "chart1";
             // 
-            // l_dep_dest2
-            // 
-            l_dep_dest2.AutoSize = true;
-            l_dep_dest2.Location = new Point(644, 98);
-            l_dep_dest2.Margin = new Padding(2, 0, 2, 0);
-            l_dep_dest2.Name = "l_dep_dest2";
-            l_dep_dest2.Size = new Size(65, 20);
-            l_dep_dest2.TabIndex = 5;
-            l_dep_dest2.Text = "Amazon";
-            // 
-            // l_dep_dest1
-            // 
-            l_dep_dest1.AutoSize = true;
-            l_dep_dest1.Location = new Point(644, 59);
-            l_dep_dest1.Margin = new Padding(2, 0, 2, 0);
-            l_dep_dest1.Name = "l_dep_dest1";
-            l_dep_dest1.Size = new Size(65, 20);
-            l_dep_dest1.TabIndex = 4;
-            l_dep_dest1.Text = "Amazon";
-            // 
-            // l_dep_categorie2
-            // 
-            l_dep_categorie2.AutoSize = true;
-            l_dep_categorie2.Location = new Point(533, 98);
-            l_dep_categorie2.Margin = new Padding(2, 0, 2, 0);
-            l_dep_categorie2.Name = "l_dep_categorie2";
-            l_dep_categorie2.Size = new Size(74, 20);
-            l_dep_categorie2.TabIndex = 3;
-            l_dep_categorie2.Text = "Transport";
-            // 
-            // l_dep_categorie1
-            // 
-            l_dep_categorie1.AutoSize = true;
-            l_dep_categorie1.Location = new Point(533, 59);
-            l_dep_categorie1.Margin = new Padding(2, 0, 2, 0);
-            l_dep_categorie1.Name = "l_dep_categorie1";
-            l_dep_categorie1.Size = new Size(45, 20);
-            l_dep_categorie1.TabIndex = 2;
-            l_dep_categorie1.Text = "Loisir";
-            // 
-            // l_dep_montant2
-            // 
-            l_dep_montant2.AutoSize = true;
-            l_dep_montant2.Location = new Point(465, 98);
-            l_dep_montant2.Margin = new Padding(2, 0, 2, 0);
-            l_dep_montant2.Name = "l_dep_montant2";
-            l_dep_montant2.Size = new Size(59, 20);
-            l_dep_montant2.TabIndex = 1;
-            l_dep_montant2.Text = "-75,00€";
-            // 
-            // l_dep_montant1
-            // 
-            l_dep_montant1.AutoSize = true;
-            l_dep_montant1.Location = new Point(465, 59);
-            l_dep_montant1.Margin = new Padding(2, 0, 2, 0);
-            l_dep_montant1.Name = "l_dep_montant1";
-            l_dep_montant1.Size = new Size(59, 20);
-            l_dep_montant1.TabIndex = 0;
-            l_dep_montant1.Text = "-50,00€";
-            // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(l_depot_dest2);
-            tabPage2.Controls.Add(l_depot_dest1);
-            tabPage2.Controls.Add(l_depot_categorie2);
-            tabPage2.Controls.Add(l_depot_categorie1);
-            tabPage2.Controls.Add(l_depot_montant2);
-            tabPage2.Controls.Add(l_depot_montant1);
+            tabPage2.Controls.Add(label3);
+            tabPage2.Controls.Add(flp_recettes);
+            tabPage2.Controls.Add(chartRecettes);
             tabPage2.Location = new Point(4, 29);
             tabPage2.Margin = new Padding(2);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(2);
-            tabPage2.Size = new Size(810, 301);
+            tabPage2.Size = new Size(862, 381);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "Recette";
+            tabPage2.Text = "Recettes";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // l_depot_dest2
+            // label3
             // 
-            l_depot_dest2.AutoSize = true;
-            l_depot_dest2.Location = new Point(698, 121);
-            l_depot_dest2.Margin = new Padding(2, 0, 2, 0);
-            l_depot_dest2.Name = "l_depot_dest2";
-            l_depot_dest2.Size = new Size(65, 20);
-            l_depot_dest2.TabIndex = 6;
-            l_depot_dest2.Text = "Amazon";
+            label3.AutoSize = true;
+            label3.Location = new Point(528, 22);
+            label3.Name = "label3";
+            label3.Size = new Size(160, 20);
+            label3.TabIndex = 9;
+            label3.Text = "Liste des transactions :";
             // 
-            // l_depot_dest1
+            // flp_recettes
             // 
-            l_depot_dest1.AutoSize = true;
-            l_depot_dest1.Location = new Point(698, 92);
-            l_depot_dest1.Margin = new Padding(2, 0, 2, 0);
-            l_depot_dest1.Name = "l_depot_dest1";
-            l_depot_dest1.Size = new Size(65, 20);
-            l_depot_dest1.TabIndex = 5;
-            l_depot_dest1.Text = "Amazon";
+            flp_recettes.AutoScroll = true;
+            flp_recettes.Location = new Point(379, 65);
+            flp_recettes.Name = "flp_recettes";
+            flp_recettes.Size = new Size(448, 286);
+            flp_recettes.TabIndex = 8;
             // 
-            // l_depot_categorie2
+            // chartRecettes
             // 
-            l_depot_categorie2.AutoSize = true;
-            l_depot_categorie2.Location = new Point(606, 121);
-            l_depot_categorie2.Margin = new Padding(2, 0, 2, 0);
-            l_depot_categorie2.Name = "l_depot_categorie2";
-            l_depot_categorie2.Size = new Size(45, 20);
-            l_depot_categorie2.TabIndex = 4;
-            l_depot_categorie2.Text = "Loisir";
+            chartArea2.Name = "ChartArea1";
+            chartRecettes.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chartRecettes.Legends.Add(legend2);
+            chartRecettes.Location = new Point(5, 55);
+            chartRecettes.Margin = new Padding(2);
+            chartRecettes.Name = "chartRecettes";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chartRecettes.Series.Add(series2);
+            chartRecettes.Size = new Size(369, 322);
+            chartRecettes.TabIndex = 7;
+            chartRecettes.Text = "chart1";
             // 
-            // l_depot_categorie1
+            // panel2
             // 
-            l_depot_categorie1.AutoSize = true;
-            l_depot_categorie1.Location = new Point(606, 92);
-            l_depot_categorie1.Margin = new Padding(2, 0, 2, 0);
-            l_depot_categorie1.Name = "l_depot_categorie1";
-            l_depot_categorie1.Size = new Size(45, 20);
-            l_depot_categorie1.TabIndex = 3;
-            l_depot_categorie1.Text = "Loisir";
+            panel2.AutoSize = true;
+            panel2.BackColor = Color.SkyBlue;
+            panel2.Controls.Add(pictureBox2);
+            panel2.Controls.Add(panel11);
+            panel2.Controls.Add(panel10);
+            panel2.Controls.Add(panel9);
+            panel2.Controls.Add(panel8);
+            panel2.Controls.Add(panel7);
+            panel2.Controls.Add(panel6);
+            panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(label9);
+            panel2.Controls.Add(label8);
+            panel2.Controls.Add(label7);
+            panel2.Controls.Add(label6);
+            panel2.Controls.Add(label5);
+            panel2.Controls.Add(label4);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1186, 80);
+            panel2.TabIndex = 6;
             // 
-            // l_depot_montant2
+            // pictureBox2
             // 
-            l_depot_montant2.AutoSize = true;
-            l_depot_montant2.Location = new Point(521, 121);
-            l_depot_montant2.Margin = new Padding(2, 0, 2, 0);
-            l_depot_montant2.Name = "l_depot_montant2";
-            l_depot_montant2.Size = new Size(63, 20);
-            l_depot_montant2.TabIndex = 2;
-            l_depot_montant2.Text = "+50,00€";
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(1100, 7);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(70, 70);
+            pictureBox2.TabIndex = 13;
+            pictureBox2.TabStop = false;
             // 
-            // l_depot_montant1
+            // panel11
             // 
-            l_depot_montant1.AutoSize = true;
-            l_depot_montant1.Location = new Point(521, 92);
-            l_depot_montant1.Margin = new Padding(2, 0, 2, 0);
-            l_depot_montant1.Name = "l_depot_montant1";
-            l_depot_montant1.Size = new Size(63, 20);
-            l_depot_montant1.TabIndex = 1;
-            l_depot_montant1.Text = "+50,00€";
+            panel11.BorderStyle = BorderStyle.FixedSingle;
+            panel11.Location = new Point(186, 5);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(1, 70);
+            panel11.TabIndex = 12;
             // 
-            // flowLayoutPanel1
+            // panel10
             // 
-            flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Location = new Point(459, 137);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(250, 234);
-            flowLayoutPanel1.TabIndex = 7;
+            panel10.BorderStyle = BorderStyle.FixedSingle;
+            panel10.Location = new Point(855, 5);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(1, 70);
+            panel10.TabIndex = 11;
             // 
-            // Form2
+            // panel9
+            // 
+            panel9.BorderStyle = BorderStyle.FixedSingle;
+            panel9.Location = new Point(623, 5);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(1, 70);
+            panel9.TabIndex = 10;
+            // 
+            // panel8
+            // 
+            panel8.BorderStyle = BorderStyle.FixedSingle;
+            panel8.Location = new Point(520, 5);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(1, 70);
+            panel8.TabIndex = 9;
+            // 
+            // panel7
+            // 
+            panel7.BorderStyle = BorderStyle.FixedSingle;
+            panel7.Location = new Point(420, 5);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(1, 70);
+            panel7.TabIndex = 8;
+            // 
+            // panel6
+            // 
+            panel6.BorderStyle = BorderStyle.FixedSingle;
+            panel6.Location = new Point(275, 5);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(1, 70);
+            panel6.TabIndex = 7;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.logo;
+            pictureBox1.Location = new Point(9, 8);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(177, 62);
+            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 10.8F);
+            label9.ForeColor = Color.DarkBlue;
+            label9.Location = new Point(857, 8);
+            label9.Name = "label9";
+            label9.Padding = new Padding(10, 20, 10, 20);
+            label9.Size = new Size(155, 65);
+            label9.TabIndex = 5;
+            label9.Text = "Bourse et Actus";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 10.8F);
+            label8.ForeColor = Color.DarkBlue;
+            label8.Location = new Point(627, 8);
+            label8.Name = "label8";
+            label8.Padding = new Padding(10, 20, 10, 20);
+            label8.Size = new Size(225, 65);
+            label8.TabIndex = 4;
+            label8.Text = "Bons plans et Parrainage";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 10.8F);
+            label7.ForeColor = Color.DarkBlue;
+            label7.Location = new Point(524, 8);
+            label7.Name = "label7";
+            label7.Padding = new Padding(10, 20, 10, 20);
+            label7.Size = new Size(98, 65);
+            label7.TabIndex = 3;
+            label7.Text = "Produits";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.LightCyan;
+            label6.Font = new Font("Segoe UI", 10.8F);
+            label6.ForeColor = Color.DarkBlue;
+            label6.Location = new Point(421, -1);
+            label6.Name = "label6";
+            label6.Padding = new Padding(12, 28, 12, 28);
+            label6.Size = new Size(99, 81);
+            label6.TabIndex = 2;
+            label6.Text = "Services";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 10.8F);
+            label5.ForeColor = Color.DarkBlue;
+            label5.Location = new Point(280, 8);
+            label5.Name = "label5";
+            label5.Padding = new Padding(10, 20, 10, 20);
+            label5.Size = new Size(139, 65);
+            label5.TabIndex = 1;
+            label5.Text = "Mes comptes";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.SkyBlue;
+            label4.Font = new Font("Segoe UI", 10.8F);
+            label4.ForeColor = Color.DarkBlue;
+            label4.Location = new Point(188, -1);
+            label4.Name = "label4";
+            label4.Padding = new Padding(10, 28, 10, 28);
+            label4.Size = new Size(87, 81);
+            label4.TabIndex = 0;
+            label4.Text = "Accueil";
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.LinkColor = Color.Black;
+            linkLabel1.Location = new Point(57, 92);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(63, 20);
+            linkLabel1.TabIndex = 11;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Accueil/";
+            // 
+            // GestionBudget
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1186, 616);
+            Controls.Add(linkLabel1);
+            Controls.Add(panel2);
             Controls.Add(label1);
             Controls.Add(panel1);
             Margin = new Padding(2);
-            Name = "Form2";
+            Name = "GestionBudget";
             Text = "Form2";
             panel1.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
@@ -289,6 +400,11 @@
             ((System.ComponentModel.ISupportInitialize)chartDepenses).EndInit();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)chartRecettes).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -300,19 +416,27 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
-        private Label l_dep_montant1;
-        private Label l_dep_categorie1;
-        private Label l_dep_montant2;
-        private Label l_dep_categorie2;
-        private Label l_depot_montant2;
-        private Label l_depot_montant1;
-        private Label l_depot_categorie2;
-        private Label l_depot_categorie1;
-        private Label l_dep_dest2;
-        private Label l_dep_dest1;
-        private Label l_depot_dest2;
-        private Label l_depot_dest1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartDepenses;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel flp_depenses;
+        private Label label2;
+        private Panel panel2;
+        private PictureBox pictureBox2;
+        private Panel panel11;
+        private Panel panel10;
+        private Panel panel9;
+        private Panel panel8;
+        private Panel panel7;
+        private Panel panel6;
+        private PictureBox pictureBox1;
+        private Label label9;
+        private Label label8;
+        private Label label7;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private LinkLabel linkLabel1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartRecettes;
+        private Label label3;
+        private FlowLayoutPanel flp_recettes;
     }
 }

@@ -46,19 +46,19 @@ namespace AppliBoursoBank.Modeles
             return Transactions.OrderByDescending(t => t.Date).Take(count).ToList();
         }
 
-        public List<Transaction> GetCurrentMonthTransactionByType(int count, bool isDepense)
+        public List<Transaction> GetCurrentMonthTransactionByType(bool isDepense)
         {
             return Transactions
                 .Where(t => isDepense ? t.Montant < 0 : t.Montant >= 0)
                 .OrderByDescending(t => t.Date)
-                .Take(count)
+                .Where(t => t.Date.Month == DateTime.Now.Month)
                 .ToList();
         }
 
-        public IEnumerable<(Categorie Categorie, decimal Total)> GetDepensesParCategorie()
+        public IEnumerable<(Categorie Categorie, decimal Total)> GetDepensesParCategorie(bool isDepense)
         {
             IEnumerable<IGrouping<Categorie, Transaction>> liste = Transactions
-                .Where(t => t.Montant < 0) // Filtrer uniquement les dépenses
+                .Where(t => isDepense ? t.Montant < 0 : t.Montant >=0) // Filtrer uniquement les dépenses
                 .GroupBy(t => t.Categorie); // Grouper par catégorie
 
             return liste.Select(group => (group.Key, group.Sum(t => Math.Abs(t.Montant))));

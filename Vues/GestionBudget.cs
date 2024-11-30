@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using AppliBoursoBank.Controleurs;
 using AppliBoursoBank.Modeles;
 
@@ -14,17 +15,18 @@ namespace AppliBoursoBank
 {
     public partial class GestionBudget : Form, IObserver<Transaction>
     {
-        Controleur controleur = new Controleur();
+        Controleur controleur;
 
         public GestionBudget(Controleur controleur)
         {
             this.controleur = controleur;
 
             InitializeComponent();
-            getListDepenses(controleur.compte);
-            getListDepots(controleur.compte);
+            getListTransactionsByType(controleur.compte, true);
+            getListTransactionsByType(controleur.compte, false);
 
-            DisplayPieChart(controleur.compte);
+            DisplayPieChart(controleur.compte, true);
+            DisplayPieChart(controleur.compte, false);
 
             controleur.Subscribe(this);
         }
@@ -41,37 +43,93 @@ namespace AppliBoursoBank
 
         public void OnNext(Transaction transaction)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            getListTransactionsByType(controleur.compte, true);
+            getListTransactionsByType(controleur.compte, false);
+            DisplayPieChart(controleur.compte, true);
+            DisplayPieChart(controleur.compte, false);
         }
 
-
-        private void getListDepenses(Compte compte)
+        public void TransactionClick(object sender, EventArgs e)
         {
-            var dernieresDepenses = controleur.getListMonthlyTransactionByType(compte, 2, true);
-
-            // Tableau de labels existants
-            Label[] categorieLabels = { l_dep_categorie1, l_dep_categorie2 };
-            Label[] amountLabels = { l_dep_montant1, l_dep_montant2 };
-            Label[] destinataireLabels = { l_dep_dest1, l_dep_dest2 };
-
-            // Parcourir les transactions et mettre à jour les labels
-            for (int i = 0; i < dernieresDepenses.Count; i++)
+            Panel elt = sender as Panel ?? (sender as Control)?.Parent as Panel;
+            if (elt != null && elt.Tag is Transaction transaction)
             {
-                var lastTransaction = dernieresDepenses[i];
+                controleur.AfficherDetailsFenetreTransaction(transaction);
+            }
+        }
 
-                // Mettre à jour les labels
-                categorieLabels[i].Text = $"{lastTransaction.Categorie}";
-                amountLabels[i].Text = $"{lastTransaction.Montant:C}";
-                amountLabels[i].ForeColor = lastTransaction.Montant < 0 ? Color.Red : Color.Green; // Couleur conditionnelle
-                destinataireLabels[i].Text = $"{lastTransaction.Destinataire}";
+        private void Hover_Control(object sender, EventArgs e, bool isHovering, Color color)
+        {
+            var elt = sender as Control;
+
+            elt.BackColor = isHovering ? Color.LightGray : color;
+            elt.Cursor = isHovering ? Cursors.Hand : Cursors.Default;
+        }
+
+        private void getListTransactionsByType(Compte compte, bool isDepense)
+        {
+            var depenses = controleur.getListMonthlyTransactionByType(compte, isDepense);
+
+            String[] nomslabel = { "l_montant", "l_destinataire", "l_date", "l_categorie" };
+            int[,] coordonnees = { { 4, 3 },{ 80, 3 },{ 236, 3 }, {300, 3 } };
+
+            var flp = isDepense ? flp_depenses : flp_recettes;
+            flp.Controls.Clear();
+
+            for (int i = 0; i < depenses.Count; i++) {
+
+                var t = depenses[i];
+
+                String[] values = { t.Montant.ToString() + " $", t.Destinataire, t.Date.ToString("dd/MM"), t.Categorie.ToString()};
+                var color = Color.Transparent;
+                // création du panel pour la transaction i
+                Panel panel = new Panel();
+                panel.Size = new Size(409, 26);
+                panel.TabIndex = i;
+                panel.Tag = t;
+                if (i % 2 == 0)
+                {
+                    color = Color.LightBlue;
+                }
+                panel.BackColor = color;
+                panel.MouseClick += TransactionClick;
+                panel.MouseEnter += (sender, e) => Hover_Control(sender, e, true, color);
+                panel.MouseLeave += (sender, e) => Hover_Control(sender, e, false, color);
+                
+                // ajout de l transaction i au flowLayoutPanel correspondant
+                flp.Controls.Add(panel);
+
+                //création des Labels pour chaque élément de la transaction
+                for (int j = 0; j < nomslabel.Length; j++) {
+                    Label label = new Label();
+                    label.AutoSize = true;
+                    label.Location = new Point(coordonnees[j, 0], coordonnees[j, 1]);
+                    label.Name = nomslabel[j];
+                    label.TabIndex = j;
+                    label.Text = values[j];
+                    label.MouseClick += TransactionClick;
+                    label.MouseEnter += (sender, e) =>
+                    {
+                        panel.BackColor = Color.LightGray;
+                        label.Cursor = Cursors.Hand;
+                    };
+                    label.MouseLeave += (sender, e) =>
+                    {
+                        panel.BackColor = color;
+                        label.Cursor = Cursors.Default;
+                        
+                    };
+                    panel.Controls.Add(label); // ajout du label au panel de la transaction
+                }       
             }
         }
 
         private void getListDepots(Compte compte)
         {
-            var derniersDepots = controleur.getListMonthlyTransactionByType(compte, 2,false);
+            var derniersDepots = controleur.getListMonthlyTransactionByType(compte, false);
 
-            // Tableau de labels existants
+           /* // Tableau de labels existants
             Label[] categorieLabels = { l_depot_categorie1, l_depot_categorie2 };
             Label[] amountLabels = { l_depot_montant1, l_depot_montant2 };
             Label[] destinataireLabels = { l_depot_dest1, l_depot_dest2 };
@@ -86,36 +144,54 @@ namespace AppliBoursoBank
                 amountLabels[i].Text = $"{lastTransaction.Montant:C}";
                 amountLabels[i].ForeColor = lastTransaction.Montant < 0 ? Color.Red : Color.Green; // Couleur conditionnelle
                 destinataireLabels[i].Text = $"{lastTransaction.Destinataire}";
-            }
+            }*/
         }
 
-        private void DisplayPieChart(Compte compte)
+        private void DisplayPieChart(Compte compte,bool isDepense)
         {
             // Regrouper les dépenses par catégorie
-            var data = controleur.GetDepensesParCategorie(compte);
+            var data = controleur.GetTransactionsParCategorie(compte, isDepense);
+
+            var chart = isDepense ? chartDepenses : chartRecettes;
 
             // Configurer le graphique
-            chartDepenses.Series.Clear();
-            chartDepenses.Titles.Clear();
+            chart.Series.Clear();
+            chart.Titles.Clear();
+
+            // Ajouter un titre
+            chart.Titles.Add(isDepense ? "Répartition des dépenses par catégorie" : "Répartition des recettes par catégorie" );
 
             // Ajouter une série
             var series = new System.Windows.Forms.DataVisualization.Charting.Series
             {
-                Name = "Dépenses",
+                Name = isDepense ? "Dépenses" : "Recettes",
                 IsVisibleInLegend = true,
                 ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
             };
 
-            chartDepenses.Series.Add(series);
+            chart.Series.Add(series);
+
+            decimal totalDepenses = data.Sum(item => item.Total);
 
             // Ajouter les données au graphique
             foreach (var item in data)
             {
-                series.Points.AddXY(item.Categorie.ToString(), item.Total);
-            }
+                System.Diagnostics.Debug.WriteLine(item);
+                // Ajouter le point à la série
 
-            // Ajouter un titre
-            chartDepenses.Titles.Add("Répartition des dépenses par catégorie");
+                double pourcentage = (double)(item.Total / totalDepenses * 100);
+
+                var point = new System.Windows.Forms.DataVisualization.Charting.DataPoint
+                {
+                    YValues = new[] { (double)item.Total },
+                    LegendText = item.Categorie.ToString(),
+                    Label = pourcentage.ToString("0.0") + "%",
+               
+                };
+                point.LabelForeColor = Color.White;
+                series.Points.Add(point);
+               
+            }
         }
 
      

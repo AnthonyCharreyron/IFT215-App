@@ -73,8 +73,8 @@ namespace AppliBoursoBank
             Panel[] panels = { p_transaction1, p_transaction2, p_transaction3 };
             foreach (Panel panel in panels)
             {
-                panel.MouseEnter += (sender, e) => Hover_Panel(sender, e, true);
-                panel.MouseLeave += (sender, e) => Hover_Panel(sender, e, false);
+                panel.MouseEnter += (sender, e) => Hover_Control(sender, e, true);
+                panel.MouseLeave += (sender, e) => Hover_Control(sender, e, false);
 
                 panel.MouseClick += TransactionClick;
 
@@ -110,12 +110,12 @@ namespace AppliBoursoBank
             }
         }
 
-        private void Hover_Panel(object sender, EventArgs e, bool isHovering)
+        private void Hover_Control(object sender, EventArgs e, bool isHovering)
         {
-            var panel = sender as Panel;
+            var elt = sender as Control;
 
-            panel.BackColor = isHovering ? Color.LightGray : SystemColors.Control;
-            panel.Cursor = isHovering ? Cursors.Hand : Cursors.Default;
+            elt.BackColor = isHovering ? Color.LightGray : SystemColors.Control;
+            elt.Cursor = isHovering ? Cursors.Hand : Cursors.Default;
         }
 
         private void Hover_Image(object sender, EventArgs e, bool isHovering)

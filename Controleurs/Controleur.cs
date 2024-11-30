@@ -57,15 +57,15 @@ namespace AppliBoursoBank.Controleurs
             fireEvent();
         }
 
-        public List<Transaction> getListMonthlyTransactionByType(Compte compte, int count, bool isDepense)
+        public List<Transaction> getListMonthlyTransactionByType(Compte compte, bool isDepense)
         {
-            return compte.GetCurrentMonthTransactionByType(count, isDepense);
+            return compte.GetCurrentMonthTransactionByType(isDepense);
         }
 
 
-        public IEnumerable<(Categorie Categorie, decimal Total)> GetDepensesParCategorie(Compte compte)
+        public IEnumerable<(Categorie Categorie, decimal Total)> GetTransactionsParCategorie(Compte compte, bool isDepense)
         {
-            return compte.GetDepensesParCategorie(); // Totaliser les montants
+            return compte.GetDepensesParCategorie(isDepense); // Totaliser les montants
         }
 
         public void fireEvent()
