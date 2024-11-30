@@ -125,28 +125,6 @@ namespace AppliBoursoBank
             }
         }
 
-        private void getListDepots(Compte compte)
-        {
-            var derniersDepots = controleur.getListMonthlyTransactionByType(compte, false);
-
-           /* // Tableau de labels existants
-            Label[] categorieLabels = { l_depot_categorie1, l_depot_categorie2 };
-            Label[] amountLabels = { l_depot_montant1, l_depot_montant2 };
-            Label[] destinataireLabels = { l_depot_dest1, l_depot_dest2 };
-
-            // Parcourir les transactions et mettre à jour les labels
-            for (int i = 0; i < derniersDepots.Count; i++)
-            {
-                var lastTransaction = derniersDepots[i];
-
-                // Mettre à jour les labels
-                categorieLabels[i].Text = $"{lastTransaction.Categorie}";
-                amountLabels[i].Text = $"{lastTransaction.Montant:C}";
-                amountLabels[i].ForeColor = lastTransaction.Montant < 0 ? Color.Red : Color.Green; // Couleur conditionnelle
-                destinataireLabels[i].Text = $"{lastTransaction.Destinataire}";
-            }*/
-        }
-
         private void DisplayPieChart(Compte compte,bool isDepense)
         {
             // Regrouper les dépenses par catégorie
