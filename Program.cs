@@ -28,20 +28,6 @@ namespace AppliBoursoBank
         static void initData()
         {
             compte = new Compte(1, "John Doe", 200);
-
-            compte.Deposer(new DateTime(2024, 10, 5), 1500, "Employeur", "Validé", Categorie.Revenus, "Virement", "Salaire du mois d'octobre");
-            compte.Deposer(new DateTime(2024, 10, 7), 80, "Super C", "Validé", Categorie.Alimentation, "Carte bancaire", "Courses alimentaires");
-            compte.Retirer(new DateTime(2024, 10, 9), 45, "Netflix", "Validé", Categorie.Loisirs, "Virement", "Abonnement mensuel");
-            compte.Retirer(new DateTime(2024, 10, 10), 800, "Propriétaire", "Validé", Categorie.Logement, "Virement", "Loyer d'octobre");
-            compte.Deposer(new DateTime(2024, 10, 12), 35, "Pharmacie Jean Coutu", "Validé", Categorie.Santé, "Carte bancaire", "Achat de vitamines");
-            compte.Retirer(new DateTime(2024, 10, 14), 25, "STM", "Validé", Categorie.Transports, "Carte bancaire", "Achat d'une carte de métro");
-            compte.Deposer(new DateTime(2024, 10, 15), 120, "Revenu locatif", "Validé", Categorie.Revenus, "Virement", "Paiement locataire");
-            compte.Retirer(new DateTime(2024, 10, 18), 100, "Amazon", "Validé", Categorie.Loisirs, "Carte bancaire", "Achat de livres");
-            compte.Deposer(new DateTime(2024, 10, 19), 70, "IGA", "Validé", Categorie.Alimentation, "Carte bancaire", "Courses alimentaires");
-            compte.Retirer(new DateTime(2024, 10, 20), 25, "Spotify", "Validé", Categorie.Loisirs, "Virement", "Abonnement Spotify Premium");
-            compte.Deposer(new DateTime(2024, 10, 22), 50, "SAAQ", "Validé", Categorie.Autre, "Carte bancaire", "Renouvellement permis de conduire");
-            compte.Retirer(new DateTime(2024, 10, 25), 200, "Centre dentaire", "Validé", Categorie.Santé, "Carte bancaire", "Détartrage dentaire");
-            compte.Retirer(new DateTime(2024, 10, 27), 15, "Cinéplex", "Validé", Categorie.Loisirs, "Espèce", "Sortie cinéma");
             compte.Deposer(new DateTime(2024, 10, 30), 200, "Client freelance", "Validé", Categorie.Revenus, "Virement", "Paiement prestation");
             compte.Retirer(new DateTime(2024, 11, 1), 90, "Super C", "Validé", Categorie.Alimentation, "Carte bancaire", "Courses alimentaires");
             compte.Retirer(new DateTime(2024, 11, 2), 60, "Hydro-Québec", "Validé", Categorie.Logement, "Virement", "Facture électricité");
@@ -68,6 +54,19 @@ namespace AppliBoursoBank
             compte.Retirer(new DateTime(2024, 11, 28), 25, "Métro", "En cours", Categorie.Transports, "Espèce", "Recharge de carte de transport");
             compte.Deposer(new DateTime(2024, 11, 30), 50, "Dépanneur", "Validé", Categorie.Alimentation, "Espèce", "Achat de produits de dépannage");
 
+            compte.Deposer(new DateTime(2024, 12, 5), 1500, "Employeur", "Validé", Categorie.Revenus, "Virement", "Salaire du mois d'octobre");
+            compte.Deposer(new DateTime(2024, 12, 7), 80, "Super C", "Validé", Categorie.Alimentation, "Carte bancaire", "Courses alimentaires");
+            compte.Retirer(new DateTime(2024, 12, 9), 45, "Netflix", "Validé", Categorie.Loisirs, "Virement", "Abonnement mensuel");
+            compte.Retirer(new DateTime(2024, 12, 10), 800, "Propriétaire", "Validé", Categorie.Logement, "Virement", "Loyer d'octobre");
+            compte.Deposer(new DateTime(2024, 12, 12), 35, "Pharmacie Jean Coutu", "Validé", Categorie.Santé, "Carte bancaire", "Achat de vitamines");
+            compte.Retirer(new DateTime(2024, 12, 14), 25, "STM", "Validé", Categorie.Transports, "Carte bancaire", "Achat d'une carte de métro");
+            compte.Deposer(new DateTime(2024, 12, 15), 120, "Revenu locatif", "Validé", Categorie.Revenus, "Virement", "Paiement locataire");
+            compte.Retirer(new DateTime(2024, 12, 18), 100, "Amazon", "Validé", Categorie.Loisirs, "Carte bancaire", "Achat de livres");
+            compte.Deposer(new DateTime(2024, 12, 19), 70, "IGA", "Validé", Categorie.Alimentation, "Carte bancaire", "Courses alimentaires");
+            compte.Retirer(new DateTime(2024, 12, 20), 25, "Spotify", "Validé", Categorie.Loisirs, "Virement", "Abonnement Spotify Premium");
+            compte.Deposer(new DateTime(2024, 12, 22), 50, "SAAQ", "Validé", Categorie.Autre, "Carte bancaire", "Renouvellement permis de conduire");
+            compte.Retirer(new DateTime(2024, 12, 25), 200, "Centre dentaire", "Validé", Categorie.Santé, "Carte bancaire", "Détartrage dentaire");
+            compte.Retirer(new DateTime(2024, 12, 27), 15, "Cinéplex", "Validé", Categorie.Loisirs, "Espèce", "Sortie cinéma");
         }
     }
 }
