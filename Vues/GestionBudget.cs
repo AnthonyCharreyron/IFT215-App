@@ -23,11 +23,12 @@ namespace AppliBoursoBank
             controleur.Subscribe(this);
 
             InitializeComponent();
-            getListTransactionsByType(controleur.compte, true);
-            getListTransactionsByType(controleur.compte, false);
-
-            DisplayPieChart(controleur.compte, true);
-            DisplayPieChart(controleur.compte, false);
+            getListTransactionsByType(controleur.compte, "depense");
+            getListTransactionsByType(controleur.compte, "recette");
+            getListTransactionsByType(controleur.compte, "all");
+            DisplayPieChart(controleur.compte, "depense");
+            DisplayPieChart(controleur.compte, "recette");
+            DisplayPieChart(controleur.compte, "all");
 
             string mois = DateTime.Now.ToString("MMMM");
             l_month.Text = char.ToUpper(mois[0]) + mois.Substring(1);
@@ -46,6 +47,7 @@ namespace AppliBoursoBank
         public void Return_Accueil(object sender, EventArgs e)
         {
             controleur.AfficherAccueil();
+            controleur.unSubscribe(this);
             this.Close();
         }
 
@@ -66,14 +68,14 @@ namespace AppliBoursoBank
             elt.Cursor = isHovering ? Cursors.Hand : Cursors.Default;
         }
 
-        private void getListTransactionsByType(Compte compte, bool isDepense)
+        private void getListTransactionsByType(Compte compte, string type)
         {
-            var depenses = controleur.getListMonthlyTransactionByType(compte, isDepense);
+            var depenses = controleur.getListMonthlyTransactionByType(compte, type);
 
             String[] nomslabel = { "l_montant", "l_destinataire", "l_date", "l_categorie" };
             int[,] coordonnees = { { 4, 3 }, { 80, 3 }, { 236, 3 }, { 300, 3 } };
 
-            var flp = isDepense ? flp_depenses : flp_recettes;
+            var flp = (type=="depense") ? flp_depenses : (type=="recette") ? flp_recettes : flp_general;
             flp.Controls.Clear();
 
             for (int i = 0; i < depenses.Count; i++)
@@ -109,6 +111,10 @@ namespace AppliBoursoBank
                     label.Name = nomslabel[j];
                     label.TabIndex = j;
                     label.Text = values[j];
+                    if(type == "all" && j == 0) 
+                    {
+                        label.ForeColor = t.Montant < 0 ? Color.Red : Color.Green;
+                    }
                     label.MouseClick += TransactionClick;
                     label.MouseEnter += (sender, e) =>
                     {
@@ -123,37 +129,45 @@ namespace AppliBoursoBank
                     };
                     panel.Controls.Add(label); // ajout du label au panel de la transaction
                 }
+
             }
         }
 
-        private void DisplayPieChart(Compte compte, bool isDepense)
+        private void DisplayPieChart(Compte compte,string type)
         {
             // Regrouper les dépenses par catégorie
-            var data = controleur.GetTransactionsParCategorie(compte, isDepense);
+            var data = controleur.GetTransactionsParCategorie(compte, type); // TO DO 
 
-            var chart = isDepense ? chartDepenses : chartRecettes;
+            var chart = (type == "depense") ? chartDepenses : (type == "recette") ? chartRecettes : chartAll;
 
             // Configurer le graphique
             chart.Series.Clear();
             chart.Titles.Clear();
 
             // Ajouter un titre
-            chart.Titles.Add(isDepense ? "Répartition des dépenses par catégorie" : "Répartition des recettes par catégorie");
+            chart.Titles.Add((type == "depense") ? "Répartition des dépenses par catégorie" : (type == "recette") ? "Répartition des recettes par catégorie" : "Equilibre entrées / sorties") ;
 
             // Ajouter une série
             var series = new System.Windows.Forms.DataVisualization.Charting.Series
             {
-                Name = isDepense ? "Dépenses" : "Recettes",
+                Name = (type == "depense") ? "Dépenses" : (type == "recette") ? "Recettes" : "Général",
                 IsVisibleInLegend = true,
-                ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie
+                ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie,
             };
 
             chart.Series.Add(series);
 
-            decimal totalDepenses = data.Sum(item => item.Total);
+            decimal totAll = 0;
 
-            var label = isDepense ? l_totdepenses : l_totrecettes;
-            label.Text = totalDepenses.ToString()+" $";
+            if (type == "all")
+            {
+                totAll = data.Where(item => item.Groupe == "Recettes").Sum(item => item.Total) - data.Where(item => item.Groupe == "Dépenses").Sum(item => item.Total);
+            }
+
+            decimal total = data.Sum(item => item.Total);
+
+            var label = (type == "depense") ? l_totdepenses : (type == "recette") ? l_totrecettes : l_totmensuel;
+            label.Text =(type=="all") ? totAll.ToString() + " $" : total.ToString()+" $" ;
 
             // Ajouter les données au graphique
             foreach (var item in data)
@@ -161,12 +175,12 @@ namespace AppliBoursoBank
                 System.Diagnostics.Debug.WriteLine(item);
                 // Ajouter le point à la série
 
-                double pourcentage = (double)(item.Total / totalDepenses * 100);
+                double pourcentage = (double)(item.Total / total * 100);
 
                 var point = new System.Windows.Forms.DataVisualization.Charting.DataPoint
                 {
                     YValues = new[] { (double)item.Total },
-                    LegendText = item.Categorie.ToString(),
+                    LegendText = item.Groupe.ToString(),
                     Label = pourcentage.ToString("0.0") + "%",
 
                 };
@@ -189,10 +203,12 @@ namespace AppliBoursoBank
         public void OnNext(Transaction transaction)
         {
             //throw new NotImplementedException();
-            getListTransactionsByType(controleur.compte, true);
-            getListTransactionsByType(controleur.compte, false);
-            DisplayPieChart(controleur.compte, true);
-            DisplayPieChart(controleur.compte, false);
+            getListTransactionsByType(controleur.compte, "depense");
+            getListTransactionsByType(controleur.compte, "recette");
+            getListTransactionsByType(controleur.compte, "all");
+            DisplayPieChart(controleur.compte, "depense");
+            DisplayPieChart(controleur.compte, "recette");
+            DisplayPieChart(controleur.compte, "all");
         }
 
     }

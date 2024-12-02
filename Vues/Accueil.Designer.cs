@@ -52,6 +52,7 @@
             l_dest1 = new Label();
             l_solde = new Label();
             panel2 = new Panel();
+            pictureBox3 = new PictureBox();
             pictureBox2 = new PictureBox();
             panel11 = new Panel();
             panel10 = new Panel();
@@ -78,12 +79,12 @@
             panel14 = new Panel();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             linkLabel1 = new LinkLabel();
-            pictureBox3 = new PictureBox();
             groupBox1.SuspendLayout();
             p_transaction3.SuspendLayout();
             p_transaction2.SuspendLayout();
             p_transaction1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)img_budget).BeginInit();
@@ -91,7 +92,6 @@
             ((System.ComponentModel.ISupportInitialize)img_infocompte).BeginInit();
             ((System.ComponentModel.ISupportInitialize)img_virement).BeginInit();
             panel14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -352,6 +352,16 @@
             panel2.Size = new Size(1184, 84);
             panel2.TabIndex = 5;
             // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = Properties.Resources.logo;
+            pictureBox3.Location = new Point(2, 3);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(183, 78);
+            pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox3.TabIndex = 11;
+            pictureBox3.TabStop = false;
+            // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
@@ -512,6 +522,8 @@
             // 
             img_budget.Image = Properties.Resources.gestionbudget;
             img_budget.Location = new Point(680, 10);
+            img_budget.MaximumSize = new Size(105, 105);
+            img_budget.MinimumSize = new Size(105, 105);
             img_budget.Name = "img_budget";
             img_budget.Size = new Size(105, 105);
             img_budget.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -522,6 +534,8 @@
             // 
             img_infocarte.Image = Properties.Resources.infocarte;
             img_infocarte.Location = new Point(465, 9);
+            img_infocarte.MaximumSize = new Size(105, 105);
+            img_infocarte.MinimumSize = new Size(105, 105);
             img_infocarte.Name = "img_infocarte";
             img_infocarte.Size = new Size(105, 105);
             img_infocarte.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -532,6 +546,8 @@
             // 
             img_infocompte.Image = Properties.Resources.infocompte1;
             img_infocompte.Location = new Point(249, 7);
+            img_infocompte.MaximumSize = new Size(105, 105);
+            img_infocompte.MinimumSize = new Size(105, 105);
             img_infocompte.Name = "img_infocompte";
             img_infocompte.Size = new Size(105, 105);
             img_infocompte.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -543,6 +559,8 @@
             img_virement.Image = Properties.Resources.echange1;
             img_virement.InitialImage = null;
             img_virement.Location = new Point(32, 10);
+            img_virement.MaximumSize = new Size(105, 105);
+            img_virement.MinimumSize = new Size(105, 105);
             img_virement.Name = "img_virement";
             img_virement.Size = new Size(105, 105);
             img_virement.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -554,11 +572,11 @@
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             label13.ForeColor = Color.MediumVioletRed;
-            label13.Location = new Point(677, 113);
+            label13.Location = new Point(656, 113);
             label13.Name = "label13";
-            label13.Size = new Size(113, 20);
+            label13.Size = new Size(149, 20);
             label13.TabIndex = 7;
-            label13.Text = "Gestion budget";
+            label13.Text = "Recettes et dépenses";
             // 
             // label12
             // 
@@ -576,11 +594,11 @@
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             label11.ForeColor = Color.MediumVioletRed;
-            label11.Location = new Point(254, 111);
+            label11.Location = new Point(237, 113);
             label11.Name = "label11";
-            label11.Size = new Size(97, 20);
+            label11.Size = new Size(131, 20);
             label11.TabIndex = 5;
-            label11.Text = "Infos compte";
+            label11.Text = "Gestion compte(s)";
             // 
             // panel13
             // 
@@ -606,23 +624,14 @@
             // linkLabel1
             // 
             linkLabel1.AutoSize = true;
+            linkLabel1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             linkLabel1.LinkColor = Color.Black;
             linkLabel1.Location = new Point(57, 92);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(63, 20);
+            linkLabel1.Size = new Size(71, 23);
             linkLabel1.TabIndex = 10;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Accueil/";
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = Properties.Resources.logo;
-            pictureBox3.Location = new Point(2, 3);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(183, 78);
-            pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox3.TabIndex = 11;
-            pictureBox3.TabStop = false;
             // 
             // Accueil
             // 
@@ -645,6 +654,7 @@
             p_transaction1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
@@ -654,7 +664,6 @@
             ((System.ComponentModel.ISupportInitialize)img_virement).EndInit();
             panel14.ResumeLayout(false);
             panel14.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

@@ -46,24 +46,36 @@ namespace AppliBoursoBank.Modeles
             return Transactions.OrderByDescending(t => t.Date).Take(count).ToList();
         }
 
-        public List<Transaction> GetCurrentMonthTransactionByType(bool isDepense)
+        public List<Transaction> GetCurrentMonthTransactionByType(string type)
         {
             return Transactions
-                .Where(t => isDepense ? t.Montant < 0 : t.Montant >= 0)
+                .Where(t => (type=="depense") ? t.Montant < 0 : (type=="recette") ? t.Montant >= 0 : true)
                 .OrderByDescending(t => t.Date)
                 .Where(t => t.Date.Month == DateTime.Now.Month)
                 .ToList();
         }
 
-        public IEnumerable<(Categorie Categorie, decimal Total)> GetDepensesParCategorie(bool isDepense)
+        public IEnumerable<(string Groupe, decimal Total)> GetDepensesParCategorie(string type)
         {
-            IEnumerable<IGrouping<Categorie, Transaction>> liste = Transactions
-                .Where(t => isDepense ? t.Montant < 0 : t.Montant >=0) // Filtrer uniquement les dépenses
-                .Where(t => t.Date.Month == DateTime.Now.Month)
-                .GroupBy(t => t.Categorie); // Grouper par catégorie
+            // Appliquer le filtre en fonction du type
+            IEnumerable<IGrouping<string, Transaction>> liste = Transactions
+                .Where(t =>
+                   (type == "depense") ? t.Montant < 0 :
+                   (type == "recette") ? t.Montant >= 0 :
+                    true // Si "all", inclure toutes les transactions
+                )
+                .Where(t => t.Date.Month == DateTime.Now.Month) // Filtrer par le mois courant
+                .GroupBy(t =>
+                    (type == "all")
+                        ? (t.Montant < 0 ? "Dépenses" : "Recettes") // Regrouper par nature si "all"
+                        : t.Categorie.ToString() // Sinon, regrouper par catégorie
+                );
 
-            return liste.Select(group => (group.Key, group.Sum(t => Math.Abs(t.Montant))));
+            // Calculer et retourner les résultats
+                return liste.Select(group => (group.Key, group.Sum(t => Math.Abs(t.Montant))));
+
         }
+
     }
 }
 

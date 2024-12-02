@@ -28,17 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionBudget));
             label1 = new Label();
             panel1 = new Panel();
             l_month = new Label();
             tabControl1 = new TabControl();
+            tabPage3 = new TabPage();
+            l_totmensuel = new Label();
+            label11 = new Label();
+            label13 = new Label();
+            flp_general = new FlowLayoutPanel();
+            chartAll = new System.Windows.Forms.DataVisualization.Charting.Chart();
             tabPage1 = new TabPage();
             l_totdepenses = new Label();
             label10 = new Label();
@@ -71,6 +80,8 @@
             linkLabel2 = new LinkLabel();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
+            tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartAll).BeginInit();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chartDepenses).BeginInit();
             tabPage2.SuspendLayout();
@@ -100,6 +111,8 @@
             panel1.Controls.Add(label1);
             panel1.Location = new Point(133, 126);
             panel1.Margin = new Padding(2);
+            panel1.MaximumSize = new Size(929, 485);
+            panel1.MinimumSize = new Size(929, 485);
             panel1.Name = "panel1";
             panel1.Size = new Size(929, 485);
             panel1.TabIndex = 2;
@@ -118,15 +131,93 @@
             // 
             // tabControl1
             // 
+            tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             tabControl1.Location = new Point(30, 48);
             tabControl1.Margin = new Padding(2);
+            tabControl1.MaximumSize = new Size(870, 414);
+            tabControl1.MinimumSize = new Size(870, 414);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(870, 414);
             tabControl1.TabIndex = 4;
+            // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(l_totmensuel);
+            tabPage3.Controls.Add(label11);
+            tabPage3.Controls.Add(label13);
+            tabPage3.Controls.Add(flp_general);
+            tabPage3.Controls.Add(chartAll);
+            tabPage3.Location = new Point(4, 29);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new Size(862, 381);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Général";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // l_totmensuel
+            // 
+            l_totmensuel.AutoSize = true;
+            l_totmensuel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            l_totmensuel.ForeColor = Color.MediumVioletRed;
+            l_totmensuel.Location = new Point(167, 22);
+            l_totmensuel.Name = "l_totmensuel";
+            l_totmensuel.Size = new Size(67, 20);
+            l_totmensuel.TabIndex = 14;
+            l_totmensuel.Text = "montant";
+            l_totmensuel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.ForeColor = Color.MediumVioletRed;
+            label11.Location = new Point(60, 22);
+            label11.Name = "label11";
+            label11.Size = new Size(111, 20);
+            label11.TabIndex = 10;
+            label11.Text = "Total mensuel :";
+            label11.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(528, 22);
+            label13.Name = "label13";
+            label13.Size = new Size(160, 20);
+            label13.TabIndex = 13;
+            label13.Text = "Liste des transactions :";
+            // 
+            // flp_general
+            // 
+            flp_general.AutoScroll = true;
+            flp_general.BackColor = Color.Transparent;
+            flp_general.Location = new Point(379, 65);
+            flp_general.MaximumSize = new Size(448, 286);
+            flp_general.MinimumSize = new Size(448, 286);
+            flp_general.Name = "flp_general";
+            flp_general.Size = new Size(448, 286);
+            flp_general.TabIndex = 12;
+            // 
+            // chartAll
+            // 
+            chartArea5.Name = "ChartArea1";
+            chartAll.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            chartAll.Legends.Add(legend5);
+            chartAll.Location = new Point(5, 55);
+            chartAll.Margin = new Padding(2);
+            chartAll.Name = "chartAll";
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            chartAll.Series.Add(series5);
+            chartAll.Size = new Size(369, 322);
+            chartAll.TabIndex = 11;
+            chartAll.Text = "chart1";
             // 
             // tabPage1
             // 
@@ -183,23 +274,25 @@
             flp_depenses.AutoScroll = true;
             flp_depenses.BackColor = Color.Transparent;
             flp_depenses.Location = new Point(379, 65);
+            flp_depenses.MaximumSize = new Size(448, 286);
+            flp_depenses.MinimumSize = new Size(448, 286);
             flp_depenses.Name = "flp_depenses";
             flp_depenses.Size = new Size(448, 286);
             flp_depenses.TabIndex = 7;
             // 
             // chartDepenses
             // 
-            chartArea1.Name = "ChartArea1";
-            chartDepenses.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chartDepenses.Legends.Add(legend1);
+            chartArea6.Name = "ChartArea1";
+            chartDepenses.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            chartDepenses.Legends.Add(legend6);
             chartDepenses.Location = new Point(5, 55);
             chartDepenses.Margin = new Padding(2);
             chartDepenses.Name = "chartDepenses";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chartDepenses.Series.Add(series1);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            chartDepenses.Series.Add(series6);
             chartDepenses.Size = new Size(369, 322);
             chartDepenses.TabIndex = 6;
             chartDepenses.Text = "chart1";
@@ -257,23 +350,25 @@
             // 
             flp_recettes.AutoScroll = true;
             flp_recettes.Location = new Point(379, 65);
+            flp_recettes.MaximumSize = new Size(448, 286);
+            flp_recettes.MinimumSize = new Size(448, 286);
             flp_recettes.Name = "flp_recettes";
             flp_recettes.Size = new Size(448, 286);
             flp_recettes.TabIndex = 8;
             // 
             // chartRecettes
             // 
-            chartArea2.Name = "ChartArea1";
-            chartRecettes.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            chartRecettes.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            chartRecettes.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            chartRecettes.Legends.Add(legend4);
             chartRecettes.Location = new Point(5, 55);
             chartRecettes.Margin = new Padding(2);
             chartRecettes.Name = "chartRecettes";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            chartRecettes.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            chartRecettes.Series.Add(series4);
             chartRecettes.Size = new Size(369, 322);
             chartRecettes.TabIndex = 7;
             chartRecettes.Text = "chart1";
@@ -446,10 +541,11 @@
             // link_accueil
             // 
             link_accueil.AutoSize = true;
+            link_accueil.Font = new Font("Segoe UI", 10F);
             link_accueil.LinkColor = Color.Black;
             link_accueil.Location = new Point(57, 92);
             link_accueil.Name = "link_accueil";
-            link_accueil.Size = new Size(63, 20);
+            link_accueil.Size = new Size(71, 23);
             link_accueil.TabIndex = 11;
             link_accueil.TabStop = true;
             link_accueil.Text = "Accueil/";
@@ -457,10 +553,11 @@
             // linkLabel1
             // 
             linkLabel1.AutoSize = true;
+            linkLabel1.Font = new Font("Segoe UI", 10F);
             linkLabel1.LinkColor = Color.Black;
-            linkLabel1.Location = new Point(180, 92);
+            linkLabel1.Location = new Point(196, 92);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(142, 20);
+            linkLabel1.Size = new Size(163, 23);
             linkLabel1.TabIndex = 12;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Gestion budgétaire/";
@@ -468,10 +565,11 @@
             // linkLabel2
             // 
             linkLabel2.AutoSize = true;
+            linkLabel2.Font = new Font("Segoe UI", 10F);
             linkLabel2.LinkColor = Color.Black;
-            linkLabel2.Location = new Point(116, 92);
+            linkLabel2.Location = new Point(123, 92);
             linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new Size(68, 20);
+            linkLabel2.Size = new Size(77, 23);
             linkLabel2.TabIndex = 13;
             linkLabel2.TabStop = true;
             linkLabel2.Text = "Services/";
@@ -494,6 +592,9 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabControl1.ResumeLayout(false);
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)chartAll).EndInit();
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)chartDepenses).EndInit();
@@ -544,5 +645,11 @@
         private Label label12;
         private LinkLabel linkLabel1;
         private LinkLabel linkLabel2;
+        private TabPage tabPage3;
+        private Label l_totmensuel;
+        private Label label11;
+        private Label label13;
+        private FlowLayoutPanel flp_general;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartAll;
     }
 }

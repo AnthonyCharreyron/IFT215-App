@@ -34,15 +34,15 @@
             label4 = new Label();
             groupBox1 = new GroupBox();
             b_annulermodif = new Button();
-            cb_modepaiement = new ComboBox();
-            cb_categorie = new ComboBox();
-            tb_description = new TextBox();
             b_modifsave = new Button();
             l_description = new Label();
             l_modepaiement = new Label();
             l_categorie = new Label();
             label6 = new Label();
             label5 = new Label();
+            cb_categorie = new ComboBox();
+            cb_modepaiement = new ComboBox();
+            tb_description = new TextBox();
             b_contester = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -122,39 +122,6 @@
             b_annulermodif.UseVisualStyleBackColor = false;
             b_annulermodif.Visible = false;
             // 
-            // cb_modepaiement
-            // 
-            cb_modepaiement.DropDownStyle = ComboBoxStyle.DropDownList;
-            cb_modepaiement.FormattingEnabled = true;
-            cb_modepaiement.Items.AddRange(new object[] { "Carte bancaire", "Espèce", "Virement", "Chèque", "Autre" });
-            cb_modepaiement.Location = new Point(209, 76);
-            cb_modepaiement.Name = "cb_modepaiement";
-            cb_modepaiement.Size = new Size(170, 28);
-            cb_modepaiement.TabIndex = 12;
-            cb_modepaiement.Visible = false;
-            // 
-            // cb_categorie
-            // 
-            cb_categorie.DropDownStyle = ComboBoxStyle.DropDownList;
-            cb_categorie.FormattingEnabled = true;
-            cb_categorie.Items.AddRange(new object[] { "Alimentation", "Loisirs", "Transports", "Logement", "Santé", "Revenus", "Autre" });
-            cb_categorie.Location = new Point(209, 29);
-            cb_categorie.Name = "cb_categorie";
-            cb_categorie.Size = new Size(170, 28);
-            cb_categorie.TabIndex = 11;
-            cb_categorie.Visible = false;
-            // 
-            // tb_description
-            // 
-            tb_description.Location = new Point(209, 119);
-            tb_description.MaximumSize = new Size(170, 60);
-            tb_description.Multiline = true;
-            tb_description.Name = "tb_description";
-            tb_description.ScrollBars = ScrollBars.Vertical;
-            tb_description.Size = new Size(170, 56);
-            tb_description.TabIndex = 11;
-            tb_description.Visible = false;
-            // 
             // b_modifsave
             // 
             b_modifsave.BackColor = Color.LightGray;
@@ -219,6 +186,39 @@
             label5.TabIndex = 4;
             label5.Text = "Mode de transaction :";
             // 
+            // cb_categorie
+            // 
+            cb_categorie.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_categorie.FormattingEnabled = true;
+            cb_categorie.Items.AddRange(new object[] { "Alimentation", "Loisirs", "Transports", "Logement", "Santé", "Revenus", "Autre" });
+            cb_categorie.Location = new Point(209, 29);
+            cb_categorie.Name = "cb_categorie";
+            cb_categorie.Size = new Size(170, 28);
+            cb_categorie.TabIndex = 11;
+            cb_categorie.Visible = false;
+            // 
+            // cb_modepaiement
+            // 
+            cb_modepaiement.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_modepaiement.FormattingEnabled = true;
+            cb_modepaiement.Items.AddRange(new object[] { "Carte bancaire", "Espèce", "Virement", "Chèque", "Autre" });
+            cb_modepaiement.Location = new Point(209, 76);
+            cb_modepaiement.Name = "cb_modepaiement";
+            cb_modepaiement.Size = new Size(170, 28);
+            cb_modepaiement.TabIndex = 12;
+            cb_modepaiement.Visible = false;
+            // 
+            // tb_description
+            // 
+            tb_description.Location = new Point(209, 119);
+            tb_description.MaximumSize = new Size(170, 60);
+            tb_description.Multiline = true;
+            tb_description.Name = "tb_description";
+            tb_description.ScrollBars = ScrollBars.Vertical;
+            tb_description.Size = new Size(170, 56);
+            tb_description.TabIndex = 11;
+            tb_description.Visible = false;
+            // 
             // b_contester
             // 
             b_contester.BackColor = Color.SkyBlue;
@@ -241,6 +241,8 @@
             Controls.Add(l_montant);
             Controls.Add(l_date_etat);
             Controls.Add(l_destinataire);
+            MaximumSize = new Size(500, 400);
+            MinimumSize = new Size(500, 400);
             Name = "FenetreTransaction";
             Text = "FenetreTransaction";
             groupBox1.ResumeLayout(false);
