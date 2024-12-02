@@ -42,6 +42,26 @@ namespace AppliBoursoBank
             p_logo.MouseLeave += (sender, e) => { Cursor = Cursors.Default; };
 
 
+            InitialiseComboBox("depense");
+            InitialiseComboBox("recette");
+            InitialiseComboBox("all");
+
+        }
+
+        private void InitialiseComboBox(string type)
+        {
+            var comboBox = (type == "depense") ? cb_depenses : (type == "recette") ? cb_recettes : cb_all;
+            comboBox.Items.Clear();
+            comboBox.Items.Add("Toutes");
+            comboBox.Items.Add("Loisirs");
+            comboBox.Items.Add("Alimentation");
+            comboBox.Items.Add("Transports");
+            comboBox.Items.Add("Logement");
+            comboBox.Items.Add("Santé");
+            comboBox.Items.Add("Revenus");
+            comboBox.Items.Add("Autre");
+
+            comboBox.SelectedIndex = 0;
         }
 
         public void Return_Accueil(object sender, EventArgs e)
