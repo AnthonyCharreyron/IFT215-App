@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using AppliBoursoBank.Controleurs;
 using AppliBoursoBank.Modeles;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AppliBoursoBank
 {
@@ -23,9 +24,9 @@ namespace AppliBoursoBank
             controleur.Subscribe(this);
 
             InitializeComponent();
-            getListTransactionsByType(controleur.compte, "depense");
-            getListTransactionsByType(controleur.compte, "recette");
-            getListTransactionsByType(controleur.compte, "all");
+            getListTransactionsByType(controleur.compte, "depense", "Toutes");
+            getListTransactionsByType(controleur.compte, "recette", "Toutes");
+            getListTransactionsByType(controleur.compte, "all", "Toutes");
             DisplayPieChart(controleur.compte, "depense");
             DisplayPieChart(controleur.compte, "recette");
             DisplayPieChart(controleur.compte, "all");
@@ -45,23 +46,30 @@ namespace AppliBoursoBank
             InitialiseComboBox("depense");
             InitialiseComboBox("recette");
             InitialiseComboBox("all");
-
         }
 
         private void InitialiseComboBox(string type)
         {
-            var comboBox = (type == "depense") ? cb_depenses : (type == "recette") ? cb_recettes : cb_all;
-            comboBox.Items.Clear();
-            comboBox.Items.Add("Toutes");
-            comboBox.Items.Add("Loisirs");
-            comboBox.Items.Add("Alimentation");
-            comboBox.Items.Add("Transports");
-            comboBox.Items.Add("Logement");
-            comboBox.Items.Add("Santé");
-            comboBox.Items.Add("Revenus");
-            comboBox.Items.Add("Autre");
+            var cb = (type == "depense") ? cb_depenses : (type == "recette") ? cb_recettes : cb_all;
+            cb.Items.Clear();
+            cb.Items.Add("Toutes");
+            cb.Items.Add("Loisirs");
+            cb.Items.Add("Alimentation");
+            cb.Items.Add("Transports");
+            cb.Items.Add("Logement");
+            cb.Items.Add("Santé");
+            cb.Items.Add("Revenus");
+            cb.Items.Add("Autre");
 
-            comboBox.SelectedIndex = 0;
+            cb.SelectedIndex = 0;
+
+            cb.SelectedIndexChanged += (sender, e) => ComboBox_SelectionChanged(type, cb);
+        }
+
+        private void ComboBox_SelectionChanged(string type, System.Windows.Forms.ComboBox comboBox)
+        {
+            string selectedCategory = comboBox.SelectedItem.ToString();
+            getListTransactionsByType(controleur.compte, type, selectedCategory);
         }
 
         public void Return_Accueil(object sender, EventArgs e)
@@ -88,9 +96,9 @@ namespace AppliBoursoBank
             elt.Cursor = isHovering ? Cursors.Hand : Cursors.Default;
         }
 
-        private void getListTransactionsByType(Compte compte, string type)
+        private void getListTransactionsByType(Compte compte, string type, string categorie)
         {
-            var depenses = controleur.getListMonthlyTransactionByType(compte, type);
+            var depenses = controleur.getListMonthlyTransactionByType(compte, type, categorie);
 
             String[] nomslabel = { "l_montant", "l_destinataire", "l_date", "l_categorie" };
             int[,] coordonnees = { { 4, 3 }, { 80, 3 }, { 236, 3 }, { 300, 3 } };
@@ -223,9 +231,9 @@ namespace AppliBoursoBank
         public void OnNext(Transaction transaction)
         {
             //throw new NotImplementedException();
-            getListTransactionsByType(controleur.compte, "depense");
-            getListTransactionsByType(controleur.compte, "recette");
-            getListTransactionsByType(controleur.compte, "all");
+            getListTransactionsByType(controleur.compte, "depense", "Toutes");
+            getListTransactionsByType(controleur.compte, "recette", "Toutes");
+            getListTransactionsByType(controleur.compte, "all", "Toutes");
             DisplayPieChart(controleur.compte, "depense");
             DisplayPieChart(controleur.compte, "recette");
             DisplayPieChart(controleur.compte, "all");

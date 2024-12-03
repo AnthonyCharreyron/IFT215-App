@@ -46,11 +46,13 @@ namespace AppliBoursoBank.Modeles
             return Transactions.OrderByDescending(t => t.Date).Take(count).ToList();
         }
 
-        public List<Transaction> GetCurrentMonthTransactionByType(string type)
+        public List<Transaction> GetCurrentMonthTransactionByType(string type, string categorie)
         {
             return Transactions
-                .Where(t => (type=="depense") ? t.Montant < 0 : (type=="recette") ? t.Montant >= 0 : true)
+                .Where(t => (type == "depense") ? t.Montant < 0 : (type == "recette") ? t.Montant >= 0 : true)
                 .OrderByDescending(t => t.Date)
+                .Where(t =>
+                    categorie == "Toutes" || t.Categorie.ToString() == categorie)
                 .Where(t => t.Date.Month == DateTime.Now.Month)
                 .ToList();
         }

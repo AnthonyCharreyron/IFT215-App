@@ -28,21 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionBudget));
             label1 = new Label();
             panel1 = new Panel();
             l_month = new Label();
             tabControl1 = new TabControl();
             tabPage3 = new TabPage();
+            cb_all = new ComboBox();
             l_totmensuel = new Label();
             label11 = new Label();
             label13 = new Label();
@@ -56,6 +57,7 @@
             flp_depenses = new FlowLayoutPanel();
             chartDepenses = new System.Windows.Forms.DataVisualization.Charting.Chart();
             tabPage2 = new TabPage();
+            cb_recettes = new ComboBox();
             l_totrecettes = new Label();
             label12 = new Label();
             label3 = new Label();
@@ -79,8 +81,6 @@
             link_accueil = new LinkLabel();
             linkLabel1 = new LinkLabel();
             linkLabel2 = new LinkLabel();
-            cb_recettes = new ComboBox();
-            cb_all = new ComboBox();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage3.SuspendLayout();
@@ -165,6 +165,15 @@
             tabPage3.Text = "Général";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // cb_all
+            // 
+            cb_all.FormattingEnabled = true;
+            cb_all.IntegralHeight = false;
+            cb_all.Location = new Point(851, 69);
+            cb_all.Name = "cb_all";
+            cb_all.Size = new Size(182, 33);
+            cb_all.TabIndex = 15;
+            // 
             // l_totmensuel
             // 
             l_totmensuel.AutoSize = true;
@@ -205,7 +214,7 @@
             // 
             flp_general.AutoScroll = true;
             flp_general.BackColor = Color.Transparent;
-            flp_general.Location = new Point(474, 81);
+            flp_general.Location = new Point(473, 103);
             flp_general.Margin = new Padding(4);
             flp_general.MaximumSize = new Size(560, 358);
             flp_general.MinimumSize = new Size(560, 358);
@@ -215,17 +224,17 @@
             // 
             // chartAll
             // 
-            chartArea1.Name = "ChartArea1";
-            chartAll.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chartAll.Legends.Add(legend1);
+            chartArea6.Name = "ChartArea1";
+            chartAll.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            chartAll.Legends.Add(legend6);
             chartAll.Location = new Point(6, 69);
             chartAll.Margin = new Padding(2);
             chartAll.Name = "chartAll";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chartAll.Series.Add(series1);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            chartAll.Series.Add(series6);
             chartAll.Size = new Size(461, 402);
             chartAll.TabIndex = 11;
             chartAll.Text = "chart1";
@@ -252,7 +261,7 @@
             // 
             cb_depenses.FormattingEnabled = true;
             cb_depenses.IntegralHeight = false;
-            cb_depenses.Location = new Point(883, 20);
+            cb_depenses.Location = new Point(851, 69);
             cb_depenses.Name = "cb_depenses";
             cb_depenses.Size = new Size(182, 33);
             cb_depenses.TabIndex = 10;
@@ -297,7 +306,7 @@
             // 
             flp_depenses.AutoScroll = true;
             flp_depenses.BackColor = Color.Transparent;
-            flp_depenses.Location = new Point(474, 81);
+            flp_depenses.Location = new Point(473, 103);
             flp_depenses.Margin = new Padding(4);
             flp_depenses.MaximumSize = new Size(560, 358);
             flp_depenses.MinimumSize = new Size(560, 358);
@@ -307,17 +316,17 @@
             // 
             // chartDepenses
             // 
-            chartArea2.Name = "ChartArea1";
-            chartDepenses.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            chartDepenses.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            chartDepenses.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            chartDepenses.Legends.Add(legend4);
             chartDepenses.Location = new Point(6, 69);
             chartDepenses.Margin = new Padding(2);
             chartDepenses.Name = "chartDepenses";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            chartDepenses.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            chartDepenses.Series.Add(series4);
             chartDepenses.Size = new Size(461, 402);
             chartDepenses.TabIndex = 6;
             chartDepenses.Text = "chart1";
@@ -338,6 +347,15 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Recettes";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // cb_recettes
+            // 
+            cb_recettes.FormattingEnabled = true;
+            cb_recettes.IntegralHeight = false;
+            cb_recettes.Location = new Point(851, 69);
+            cb_recettes.Name = "cb_recettes";
+            cb_recettes.Size = new Size(182, 33);
+            cb_recettes.TabIndex = 12;
             // 
             // l_totrecettes
             // 
@@ -378,7 +396,7 @@
             // flp_recettes
             // 
             flp_recettes.AutoScroll = true;
-            flp_recettes.Location = new Point(474, 81);
+            flp_recettes.Location = new Point(473, 103);
             flp_recettes.Margin = new Padding(4);
             flp_recettes.MaximumSize = new Size(560, 358);
             flp_recettes.MinimumSize = new Size(560, 358);
@@ -388,17 +406,17 @@
             // 
             // chartRecettes
             // 
-            chartArea3.Name = "ChartArea1";
-            chartRecettes.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            chartRecettes.Legends.Add(legend3);
+            chartArea5.Name = "ChartArea1";
+            chartRecettes.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            chartRecettes.Legends.Add(legend5);
             chartRecettes.Location = new Point(6, 69);
             chartRecettes.Margin = new Padding(2);
             chartRecettes.Name = "chartRecettes";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            chartRecettes.Series.Add(series3);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            chartRecettes.Series.Add(series5);
             chartRecettes.Size = new Size(461, 402);
             chartRecettes.TabIndex = 7;
             chartRecettes.Text = "chart1";
@@ -621,24 +639,6 @@
             linkLabel2.TabIndex = 13;
             linkLabel2.TabStop = true;
             linkLabel2.Text = "Services/";
-            // 
-            // cb_recettes
-            // 
-            cb_recettes.FormattingEnabled = true;
-            cb_recettes.IntegralHeight = false;
-            cb_recettes.Location = new Point(882, 20);
-            cb_recettes.Name = "cb_recettes";
-            cb_recettes.Size = new Size(182, 33);
-            cb_recettes.TabIndex = 12;
-            // 
-            // cb_all
-            // 
-            cb_all.FormattingEnabled = true;
-            cb_all.IntegralHeight = false;
-            cb_all.Location = new Point(895, 3);
-            cb_all.Name = "cb_all";
-            cb_all.Size = new Size(182, 33);
-            cb_all.TabIndex = 15;
             // 
             // GestionBudget
             // 

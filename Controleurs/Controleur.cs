@@ -72,9 +72,9 @@ namespace AppliBoursoBank.Controleurs
             fireEvent();
         }
 
-        public List<Transaction> getListMonthlyTransactionByType(Compte compte, string type)
+        public List<Transaction> getListMonthlyTransactionByType(Compte compte, string type, string categorie)
         {
-            return compte.GetCurrentMonthTransactionByType(type);
+            return compte.GetCurrentMonthTransactionByType(type, categorie);
         }
 
 
