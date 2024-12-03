@@ -54,7 +54,7 @@ namespace AppliBoursoBank
             compte.Retirer(new DateTime(2024, 11, 28), 25, "Métro", "En cours", Categorie.Transports, "Espèce", "Recharge de carte de transport");
             compte.Deposer(new DateTime(2024, 11, 30), 50, "Dépanneur", "Validé", Categorie.Alimentation, "Espèce", "Achat de produits de dépannage");
 
-            compte.Deposer(new DateTime(2024, 12, 5), 1500, "Employeur", "Validé", Categorie.Revenus, "Virement", "Salaire du mois d'octobre");
+            compte.Deposer(new DateTime(2024, 12, 5), 1000, "Employeur", "Validé", Categorie.Revenus, "Virement", "Salaire du mois d'octobre");
             compte.Deposer(new DateTime(2024, 12, 7), 80, "Super C", "Validé", Categorie.Alimentation, "Carte bancaire", "Courses alimentaires");
             compte.Retirer(new DateTime(2024, 12, 9), 45, "Netflix", "Validé", Categorie.Loisirs, "Virement", "Abonnement mensuel");
             compte.Retirer(new DateTime(2024, 12, 10), 800, "Propriétaire", "Validé", Categorie.Logement, "Virement", "Loyer d'octobre");

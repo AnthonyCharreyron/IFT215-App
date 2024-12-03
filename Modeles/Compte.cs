@@ -46,18 +46,19 @@ namespace AppliBoursoBank.Modeles
             return Transactions.OrderByDescending(t => t.Date).Take(count).ToList();
         }
 
-        public List<Transaction> GetCurrentMonthTransactionByType(string type, string categorie)
+        public List<Transaction> GetCurrentMonthTransactionByType(string type, string categorie, int mois, int year)
         {
             return Transactions
                 .Where(t => (type == "depense") ? t.Montant < 0 : (type == "recette") ? t.Montant >= 0 : true)
                 .OrderByDescending(t => t.Date)
                 .Where(t =>
                     categorie == "Toutes" || t.Categorie.ToString() == categorie)
-                .Where(t => t.Date.Month == DateTime.Now.Month)
+                .Where(t => t.Date.Month == mois)
+                .Where(t => t.Date.Year == year)
                 .ToList();
         }
 
-        public IEnumerable<(string Groupe, decimal Total)> GetDepensesParCategorie(string type)
+        public IEnumerable<(string Groupe, decimal Total)> GetDepensesParCategorie(string type, int mois, int year)
         {
             // Appliquer le filtre en fonction du type
             IEnumerable<IGrouping<string, Transaction>> liste = Transactions
@@ -66,7 +67,8 @@ namespace AppliBoursoBank.Modeles
                    (type == "recette") ? t.Montant >= 0 :
                     true // Si "all", inclure toutes les transactions
                 )
-                .Where(t => t.Date.Month == DateTime.Now.Month) // Filtrer par le mois courant
+                .Where(t => t.Date.Month == mois) // Filtrer par le mois
+                .Where(t => t.Date.Year == year)
                 .GroupBy(t =>
                     (type == "all")
                         ? (t.Montant < 0 ? "Dépenses" : "Recettes") // Regrouper par nature si "all"

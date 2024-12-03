@@ -26,8 +26,8 @@ namespace AppliBoursoBank
 
             InitializeComponent();
             Initialize();
-            AfficherTransactions(controleur.compte);
-            AfficherSoldeCompte(controleur.compte);
+            AfficherTransactions();
+            AfficherSoldeCompte();
             Transactions_Events(groupBox1);
 
             img_budget.MouseEnter += (sender, e) => Hover_Image(sender, e, true);
@@ -128,9 +128,9 @@ namespace AppliBoursoBank
         }
 
 
-        private void AfficherTransactions(Compte compte)
+        private void AfficherTransactions()
         {
-            var dernieresTransactions = controleur.getListTransactions(compte, 3);
+            var dernieresTransactions = controleur.getListTransactions(3);
 
             Panel[] panels = { p_transaction1, p_transaction2, p_transaction3 };
             // Tableau de labels existants
@@ -157,10 +157,10 @@ namespace AppliBoursoBank
             }
         }
 
-        private void AfficherSoldeCompte(Compte compte)
+        private void AfficherSoldeCompte()
         {
 
-            var solde = controleur.getSoldeCompte(compte);
+            var solde = controleur.getSoldeCompte();
             l_solde.Text = $"{solde} $";
         }
 
@@ -177,7 +177,7 @@ namespace AppliBoursoBank
         public void OnNext(Transaction transaction)
         {
             //throw new NotImplementedException();
-            AfficherTransactions(controleur.compte);
+            AfficherTransactions();
         }
 
     }

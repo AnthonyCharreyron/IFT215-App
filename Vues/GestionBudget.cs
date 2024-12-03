@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using AppliBoursoBank.Controleurs;
 using AppliBoursoBank.Modeles;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ComboBox = System.Windows.Forms.ComboBox;
 
 namespace AppliBoursoBank
 {
@@ -18,21 +20,24 @@ namespace AppliBoursoBank
     {
         Controleur controleur;
 
+        int mois = DateTime.Now.Month;
+        int year = DateTime.Now.Year;  
+
         public GestionBudget(Controleur controleur)
         {
             this.controleur = controleur;
             controleur.Subscribe(this);
 
             InitializeComponent();
-            getListTransactionsByType(controleur.compte, "depense", "Toutes");
-            getListTransactionsByType(controleur.compte, "recette", "Toutes");
-            getListTransactionsByType(controleur.compte, "all", "Toutes");
-            DisplayPieChart(controleur.compte, "depense");
-            DisplayPieChart(controleur.compte, "recette");
-            DisplayPieChart(controleur.compte, "all");
+            getListTransactionsByType("depense", "Toutes");
+            getListTransactionsByType("recette", "Toutes");
+            getListTransactionsByType("all", "Toutes");
+            DisplayPieChart("depense");
+            DisplayPieChart("recette");
+            DisplayPieChart("all");
 
-            string mois = DateTime.Now.ToString("MMMM");
-            l_month.Text = char.ToUpper(mois[0]) + mois.Substring(1);
+            string moisString = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(this.mois);
+            l_month.Text = char.ToUpper(moisString[0]) + moisString.Substring(1) + " " + year.ToString();
 
             l_menuaccueil.Click += Return_Accueil;
             p_logo.Click += Return_Accueil;
@@ -42,34 +47,34 @@ namespace AppliBoursoBank
             p_logo.MouseEnter += (sender, e) => { Cursor = Cursors.Hand; };
             p_logo.MouseLeave += (sender, e) => { Cursor = Cursors.Default; };
 
+            InitialiseComboBoxes();
 
-            InitialiseComboBox("depense");
-            InitialiseComboBox("recette");
-            InitialiseComboBox("all");
+            p_previousMonth.Click += ShowPreviousMonth; 
+            p_nextMonth.Click += ShowNextMonth;
+
         }
 
-        private void InitialiseComboBox(string type)
+        private void InitialiseComboBoxes()
         {
-            var cb = (type == "depense") ? cb_depenses : (type == "recette") ? cb_recettes : cb_all;
-            cb.Items.Clear();
-            cb.Items.Add("Toutes");
-            cb.Items.Add("Loisirs");
-            cb.Items.Add("Alimentation");
-            cb.Items.Add("Transports");
-            cb.Items.Add("Logement");
-            cb.Items.Add("Santé");
-            cb.Items.Add("Revenus");
-            cb.Items.Add("Autre");
+            ComboBox[] combos = { cb_all, cb_depenses, cb_recettes };
+            String[] types = { "all", "depense", "recette" };
 
-            cb.SelectedIndex = 0;
+            for (int i = 0; i < combos.Length; i++)
+            {
+                int index = i; // Créer une variable locale pour capturer la valeur de `i` dans ce contexte
 
-            cb.SelectedIndexChanged += (sender, e) => ComboBox_SelectionChanged(type, cb);
+                combos[index].SelectedIndex = 0;
+
+                combos[index].SelectedIndexChanged += (sender, e) => ComboBox_SelectionChanged(types[index], combos[index].SelectedItem.ToString());
+
+            }
+
         }
 
-        private void ComboBox_SelectionChanged(string type, System.Windows.Forms.ComboBox comboBox)
+        private void ComboBox_SelectionChanged(string type, string selectedCategory)
         {
-            string selectedCategory = comboBox.SelectedItem.ToString();
-            getListTransactionsByType(controleur.compte, type, selectedCategory);
+            //string selectedCategory = comboBox.SelectedItem.ToString();
+            getListTransactionsByType(type, selectedCategory);
         }
 
         public void Return_Accueil(object sender, EventArgs e)
@@ -96,14 +101,14 @@ namespace AppliBoursoBank
             elt.Cursor = isHovering ? Cursors.Hand : Cursors.Default;
         }
 
-        private void getListTransactionsByType(Compte compte, string type, string categorie)
+        private void getListTransactionsByType(string type, string categorie)
         {
-            var depenses = controleur.getListMonthlyTransactionByType(compte, type, categorie);
+            var depenses = controleur.getListMonthlyTransactionByType(type, categorie, this.mois, this.year);
 
             String[] nomslabel = { "l_montant", "l_destinataire", "l_date", "l_categorie" };
             int[,] coordonnees = { { 4, 3 }, { 80, 3 }, { 236, 3 }, { 300, 3 } };
 
-            var flp = (type=="depense") ? flp_depenses : (type=="recette") ? flp_recettes : flp_general;
+            var flp = (type == "depense") ? flp_depenses : (type == "recette") ? flp_recettes : flp_general;
             flp.Controls.Clear();
 
             for (int i = 0; i < depenses.Count; i++)
@@ -116,6 +121,7 @@ namespace AppliBoursoBank
                 // création du panel pour la transaction i
                 Panel panel = new Panel();
                 panel.Size = new Size(409, 26);
+                panel.MinimumSize = new Size(409, 26);
                 panel.TabIndex = i;
                 panel.Tag = t;
                 if (i % 2 == 0)
@@ -139,7 +145,7 @@ namespace AppliBoursoBank
                     label.Name = nomslabel[j];
                     label.TabIndex = j;
                     label.Text = values[j];
-                    if(type == "all" && j == 0) 
+                    if (type == "all" && j == 0)
                     {
                         label.ForeColor = t.Montant < 0 ? Color.Red : Color.Green;
                     }
@@ -161,10 +167,10 @@ namespace AppliBoursoBank
             }
         }
 
-        private void DisplayPieChart(Compte compte,string type)
+        private void DisplayPieChart(string type)
         {
             // Regrouper les dépenses par catégorie
-            var data = controleur.GetTransactionsParCategorie(compte, type); // TO DO 
+            var data = controleur.GetTransactionsParCategorie(type, this.mois, this.year);
 
             var chart = (type == "depense") ? chartDepenses : (type == "recette") ? chartRecettes : chartAll;
 
@@ -173,7 +179,7 @@ namespace AppliBoursoBank
             chart.Titles.Clear();
 
             // Ajouter un titre
-            chart.Titles.Add((type == "depense") ? "Répartition des dépenses par catégorie" : (type == "recette") ? "Répartition des recettes par catégorie" : "Equilibre entrées / sorties") ;
+            chart.Titles.Add((type == "depense") ? "Répartition des dépenses par catégorie" : (type == "recette") ? "Répartition des recettes par catégorie" : "Equilibre entrées / sorties");
 
             // Ajouter une série
             var series = new System.Windows.Forms.DataVisualization.Charting.Series
@@ -195,7 +201,7 @@ namespace AppliBoursoBank
             decimal total = data.Sum(item => item.Total);
 
             var label = (type == "depense") ? l_totdepenses : (type == "recette") ? l_totrecettes : l_totmensuel;
-            label.Text =(type=="all") ? totAll.ToString() + " $" : total.ToString()+" $" ;
+            label.Text = (type == "all") ? totAll.ToString() + " $" : total.ToString() + " $";
 
             // Ajouter les données au graphique
             foreach (var item in data)
@@ -218,6 +224,31 @@ namespace AppliBoursoBank
             }
         }
 
+        public void ShowPreviousMonth(object sender, EventArgs e)
+        {
+
+           this.mois = (this.mois - 2 + 12) % 12 + 1;
+
+            if (this.mois == 12) { this.year -= 1; };
+
+            controleur.fireEvent();
+
+            string moisString = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(this.mois);
+            l_month.Text = char.ToUpper(moisString[0]) + moisString.Substring(1) + " " + year.ToString();
+        }
+
+        public void ShowNextMonth(object sender, EventArgs e)
+        {
+            this.mois = (this.mois % 12) + 1 ;
+
+            if(this.mois == 1) { this.year += 1; };
+
+            controleur.fireEvent();
+
+            string moisString = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(this.mois);
+            l_month.Text = char.ToUpper(moisString[0]) + moisString.Substring(1) + " " + year.ToString();
+        }
+
         public void OnCompleted()
         {
             throw new NotImplementedException();
@@ -231,12 +262,13 @@ namespace AppliBoursoBank
         public void OnNext(Transaction transaction)
         {
             //throw new NotImplementedException();
-            getListTransactionsByType(controleur.compte, "depense", "Toutes");
-            getListTransactionsByType(controleur.compte, "recette", "Toutes");
-            getListTransactionsByType(controleur.compte, "all", "Toutes");
-            DisplayPieChart(controleur.compte, "depense");
-            DisplayPieChart(controleur.compte, "recette");
-            DisplayPieChart(controleur.compte, "all");
+
+            getListTransactionsByType("depense", "Toutes");
+            getListTransactionsByType("recette", "Toutes");
+            getListTransactionsByType("all", "Toutes");
+            DisplayPieChart("depense");
+            DisplayPieChart("recette");
+            DisplayPieChart("all");
         }
 
     }

@@ -556,6 +556,7 @@
             // 
             // img_virement
             // 
+            img_virement.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             img_virement.Image = Properties.Resources.echange1;
             img_virement.InitialImage = null;
             img_virement.Location = new Point(32, 10);

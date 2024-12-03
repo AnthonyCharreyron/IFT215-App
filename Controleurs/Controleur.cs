@@ -30,12 +30,12 @@ namespace AppliBoursoBank.Controleurs
         }
 
 
-        public List<Transaction> getListTransactions(Compte compte, int count)
+        public List<Transaction> getListTransactions(int count)
         {
             return compte.getLastsTransactions(count);
         }
 
-        public decimal getSoldeCompte(Compte compte)
+        public decimal getSoldeCompte()
         {
             return compte.Solde;
         }
@@ -72,15 +72,15 @@ namespace AppliBoursoBank.Controleurs
             fireEvent();
         }
 
-        public List<Transaction> getListMonthlyTransactionByType(Compte compte, string type, string categorie)
+        public List<Transaction> getListMonthlyTransactionByType(string type, string categorie, int mois, int year)
         {
-            return compte.GetCurrentMonthTransactionByType(type, categorie);
+            return compte.GetCurrentMonthTransactionByType(type, categorie, mois, year);
         }
 
 
-        public IEnumerable<(string Groupe, decimal Total)> GetTransactionsParCategorie(Compte compte, string type)
+        public IEnumerable<(string Groupe, decimal Total)> GetTransactionsParCategorie(string type, int mois, int year)
         {
-            return compte.GetDepensesParCategorie(type); // Totaliser les montants
+            return compte.GetDepensesParCategorie(type, mois, year); // Totaliser les montants
         }
 
         public void fireEvent()
