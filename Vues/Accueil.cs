@@ -18,24 +18,27 @@ namespace AppliBoursoBank
         // Stocker la couleur actuelle de la bordure pour chaque image
         private Dictionary<PictureBox, Color> imageBorderColors = new Dictionary<PictureBox, Color>();
 
+        // Constructeur de l'accueil
         public Accueil(Controleur controleur)
         {
+            // Abonnement à l'observateur
             this.controleur = controleur;
             controleur.Subscribe(this);
 
-
+            // Iniatisation de la page
             InitializeComponent();
             Initialize();
             AfficherTransactions();
             AfficherSoldeCompte();
             Transactions_Events(groupBox1);
 
+            // Ajout d'événements
             img_budget.MouseEnter += (sender, e) => Hover_Image(sender, e, true);
             img_budget.MouseLeave += (sender, e) => Hover_Image(sender, e, false);
             img_budget.MouseClick += GestionBudgetClick;
-
         }
 
+        // Fonction qui dessine le sous-menu
         private void Initialize()
         {
             System.Drawing.Drawing2D.GraphicsPath obj = new System.Drawing.Drawing2D.GraphicsPath();
@@ -53,9 +56,10 @@ namespace AppliBoursoBank
 
         }
 
-
+        // Evénement associé au click qui ouvre la fenêtre FenetreTransaction
         public void TransactionClick(object sender, EventArgs e)
         {
+            // On récupére le tag du panel (ou du panel dans lequel est le Label 
             Panel elt = sender as Panel ?? (sender as Control)?.Parent as Panel;
             if (elt != null && elt.Tag is Transaction transaction)
             {
@@ -63,22 +67,26 @@ namespace AppliBoursoBank
             }
         }
 
+        // Evénement associé au click qui ouvre la fenêtre GestionBudget
         public void GestionBudgetClick(object sender, EventArgs e)
         {
              controleur.AfficherFenetreGestionBudget();
-            this.Hide();
+            this.Hide(); // on cache la fenêtre principale
         }
 
         private void Transactions_Events(Control control)
         {
+            // Pour tous les panels des transactions
             Panel[] panels = { p_transaction1, p_transaction2, p_transaction3 };
             foreach (Panel panel in panels)
             {
+                // On ajoute au panel les événements liés au changement de curseur, à la surbrillance et au Click
                 panel.MouseEnter += (sender, e) => Hover_Control(sender, e, true);
                 panel.MouseLeave += (sender, e) => Hover_Control(sender, e, false);
 
                 panel.MouseClick += TransactionClick;
 
+                // Pour tous les enfants (tous des Label) présents dans le panel, on ajoute aussi les événements
                 foreach (Label child in panel.Controls)
                 {
                     child.MouseClick += TransactionClick;
@@ -101,6 +109,7 @@ namespace AppliBoursoBank
             }
         }
 
+        // Fonction qui dessine les contours des images du sous-menu
         private void Img_Contour(object sender, PaintEventArgs e)
         {
             // Dessiner une bordure bleue autour de l'image
@@ -111,6 +120,7 @@ namespace AppliBoursoBank
             }
         }
 
+        // Evénement qui modifie le curseur et le fond d'un Control (panel ou label)
         private void Hover_Control(object sender, EventArgs e, bool isHovering)
         {
             var elt = sender as Control;
@@ -119,6 +129,7 @@ namespace AppliBoursoBank
             elt.Cursor = isHovering ? Cursors.Hand : Cursors.Default;
         }
 
+        // Evénement qui modifie le curseur et le fond d'une Image
         private void Hover_Image(object sender, EventArgs e, bool isHovering)
         {
             var image = sender as PictureBox;
@@ -127,11 +138,13 @@ namespace AppliBoursoBank
             image.Cursor = isHovering ? Cursors.Hand : Cursors.Default;
         }
 
-
+        // Fonction qui affiche les 3 dernières transactions
         private void AfficherTransactions()
         {
+            // on récupère les 3 dernières transactions
             var dernieresTransactions = controleur.getListTransactions(3);
-
+            
+            // Tableau de panel
             Panel[] panels = { p_transaction1, p_transaction2, p_transaction3 };
             // Tableau de labels existants
             Label[] categorieLabels = { l_categorie1, l_categorie2, l_categorie3 };
@@ -145,24 +158,27 @@ namespace AppliBoursoBank
             for (int i = 0; i < dernieresTransactions.Count; i++)
             {
                 var lastTransaction = dernieresTransactions[i];
-                panels[i].Tag = lastTransaction;    // On associe une transaction à un panel
+                panels[i].Tag = lastTransaction;    // On associe une transaction à un panel avec tag
 
                 // Mettre à jour les labels
                 categorieLabels[i].Text = $"{lastTransaction.Categorie}";
                 destinataireLabels[i].Text = $"{lastTransaction.Destinataire}";
                 amountLabels[i].Text = $"{lastTransaction.Montant} $";
-                amountLabels[i].ForeColor = lastTransaction.Montant < 0 ? Color.Red : Color.Green; // Couleur conditionnelle
+                amountLabels[i].ForeColor = lastTransaction.Montant < 0 ? Color.Red : Color.Green; // Couleur conditionnelle selon la valeur du montant
                 dateLabels[i].Text = $"{lastTransaction.Date:dd/MM/yyyy}";
                 etatLabels[i].Text = $"{lastTransaction.Etat}";
             }
         }
 
+        // Fonction qui affiche le solde du compte
         private void AfficherSoldeCompte()
         {
-
+            // On récupère la valeur du solde du compte
             var solde = controleur.getSoldeCompte();
+            // On met à jour le label
             l_solde.Text = $"{solde} $";
         }
+
 
         public void OnCompleted()
         {
@@ -174,6 +190,7 @@ namespace AppliBoursoBank
             throw new NotImplementedException();
         }
 
+        // Lorsque l'on est notifié d'un changement, on met à jour les dernières transactions
         public void OnNext(Transaction transaction)
         {
             //throw new NotImplementedException();

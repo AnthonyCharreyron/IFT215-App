@@ -98,7 +98,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.DodgerBlue;
+            label1.ForeColor = Color.DarkBlue;
             label1.Location = new Point(266, 14);
             label1.Name = "label1";
             label1.Size = new Size(175, 28);
@@ -321,7 +321,7 @@
             // 
             l_solde.AutoSize = true;
             l_solde.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            l_solde.ForeColor = Color.DodgerBlue;
+            l_solde.ForeColor = Color.DarkBlue;
             l_solde.Location = new Point(442, 14);
             l_solde.Name = "l_solde";
             l_solde.Size = new Size(108, 31);
@@ -645,6 +645,7 @@
             MaximumSize = new Size(1202, 663);
             MinimumSize = new Size(1202, 663);
             Name = "Accueil";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             groupBox1.ResumeLayout(false);
             p_transaction3.ResumeLayout(false);

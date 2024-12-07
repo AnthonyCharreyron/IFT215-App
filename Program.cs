@@ -25,6 +25,7 @@ namespace AppliBoursoBank
             controleur.LancerApplication();
         }
 
+        // Fonction qui permet de créer des données tests
         static void initData()
         {
             compte = new Compte(1, "John Doe", 200);
@@ -59,7 +60,7 @@ namespace AppliBoursoBank
             compte.Retirer(new DateTime(2024, 12, 9), 45, "Netflix", "Validé", Categorie.Loisirs, "Virement", "Abonnement mensuel");
             compte.Retirer(new DateTime(2024, 12, 10), 800, "Propriétaire", "Validé", Categorie.Logement, "Virement", "Loyer d'octobre");
             compte.Deposer(new DateTime(2024, 12, 12), 35, "Pharmacie Jean Coutu", "Validé", Categorie.Santé, "Carte bancaire", "Achat de vitamines");
-            compte.Retirer(new DateTime(2024, 12, 14), 25, "STM", "Validé", Categorie.Transports, "Carte bancaire", "Achat d'une carte de métro");
+            compte.Retirer(new DateTime(2024, 12, 14), 205, "STM", "Validé", Categorie.Transports, "Carte bancaire", "Achat d'une carte de métro");
             compte.Deposer(new DateTime(2024, 12, 15), 120, "Revenu locatif", "Validé", Categorie.Revenus, "Virement", "Paiement locataire");
             compte.Retirer(new DateTime(2024, 12, 18), 100, "Amazon", "Validé", Categorie.Loisirs, "Carte bancaire", "Achat de livres");
             compte.Deposer(new DateTime(2024, 12, 19), 70, "IGA", "Validé", Categorie.Alimentation, "Carte bancaire", "Courses alimentaires");

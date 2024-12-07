@@ -47,7 +47,7 @@
             tabPage3 = new TabPage();
             cb_all = new ComboBox();
             l_totmensuel = new Label();
-            label11 = new Label();
+            l_balancemensuelle = new Label();
             label13 = new Label();
             flp_general = new FlowLayoutPanel();
             chartAll = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -165,7 +165,7 @@
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
-            tabControl1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            tabControl1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tabControl1.Location = new Point(30, 48);
             tabControl1.Margin = new Padding(2);
             tabControl1.MaximumSize = new Size(870, 414);
@@ -179,13 +179,13 @@
             // 
             tabPage3.Controls.Add(cb_all);
             tabPage3.Controls.Add(l_totmensuel);
-            tabPage3.Controls.Add(label11);
+            tabPage3.Controls.Add(l_balancemensuelle);
             tabPage3.Controls.Add(label13);
             tabPage3.Controls.Add(flp_general);
             tabPage3.Controls.Add(chartAll);
-            tabPage3.Location = new Point(4, 29);
+            tabPage3.Location = new Point(4, 34);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(862, 381);
+            tabPage3.Size = new Size(862, 376);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Général";
             tabPage3.UseVisualStyleBackColor = true;
@@ -193,6 +193,7 @@
             // cb_all
             // 
             cb_all.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_all.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cb_all.FormattingEnabled = true;
             cb_all.IntegralHeight = false;
             cb_all.Items.AddRange(new object[] { "Toutes", "Loisirs", "Alimentation", "Transports", "Logement", "Santé", "Revenus", "Autre" });
@@ -207,28 +208,29 @@
             l_totmensuel.AutoSize = true;
             l_totmensuel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             l_totmensuel.ForeColor = Color.MediumVioletRed;
-            l_totmensuel.Location = new Point(167, 22);
+            l_totmensuel.Location = new Point(191, 22);
             l_totmensuel.Name = "l_totmensuel";
             l_totmensuel.Size = new Size(67, 20);
             l_totmensuel.TabIndex = 14;
             l_totmensuel.Text = "montant";
             l_totmensuel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label11
+            // l_balancemensuelle
             // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.ForeColor = Color.MediumVioletRed;
-            label11.Location = new Point(60, 22);
-            label11.Name = "label11";
-            label11.Size = new Size(111, 20);
-            label11.TabIndex = 10;
-            label11.Text = "Total mensuel :";
-            label11.TextAlign = ContentAlignment.MiddleCenter;
+            l_balancemensuelle.AutoSize = true;
+            l_balancemensuelle.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            l_balancemensuelle.ForeColor = Color.MediumVioletRed;
+            l_balancemensuelle.Location = new Point(49, 22);
+            l_balancemensuelle.Name = "l_balancemensuelle";
+            l_balancemensuelle.Size = new Size(143, 20);
+            l_balancemensuelle.TabIndex = 10;
+            l_balancemensuelle.Text = "Balance mensuelle :";
+            l_balancemensuelle.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label13
             // 
             label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label13.Location = new Point(528, 22);
             label13.Name = "label13";
             label13.Size = new Size(160, 20);
@@ -239,7 +241,8 @@
             // 
             flp_general.AutoScroll = true;
             flp_general.BackColor = Color.Transparent;
-            flp_general.Location = new Point(378, 82);
+            flp_general.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            flp_general.Location = new Point(378, 83);
             flp_general.MaximumSize = new Size(448, 286);
             flp_general.MinimumSize = new Size(448, 286);
             flp_general.Name = "flp_general";
@@ -273,17 +276,18 @@
             tabPage1.Controls.Add(flp_depenses);
             tabPage1.Controls.Add(chartDepenses);
             tabPage1.ForeColor = Color.Black;
-            tabPage1.Location = new Point(4, 29);
+            tabPage1.Location = new Point(4, 34);
             tabPage1.Margin = new Padding(2);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(2);
-            tabPage1.Size = new Size(862, 381);
+            tabPage1.Size = new Size(862, 376);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Dépenses";
             // 
             // cb_depenses
             // 
             cb_depenses.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_depenses.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cb_depenses.FormattingEnabled = true;
             cb_depenses.IntegralHeight = false;
             cb_depenses.Items.AddRange(new object[] { "Toutes", "Loisirs", "Alimentation", "Transports", "Logement", "Santé", "Revenus", "Autre" });
@@ -320,6 +324,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(528, 22);
             label2.Name = "label2";
             label2.Size = new Size(160, 20);
@@ -330,6 +335,7 @@
             // 
             flp_depenses.AutoScroll = true;
             flp_depenses.BackColor = Color.Transparent;
+            flp_depenses.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             flp_depenses.Location = new Point(378, 82);
             flp_depenses.MaximumSize = new Size(448, 286);
             flp_depenses.MinimumSize = new Size(448, 286);
@@ -362,11 +368,11 @@
             tabPage2.Controls.Add(label3);
             tabPage2.Controls.Add(flp_recettes);
             tabPage2.Controls.Add(chartRecettes);
-            tabPage2.Location = new Point(4, 29);
+            tabPage2.Location = new Point(4, 34);
             tabPage2.Margin = new Padding(2);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(2);
-            tabPage2.Size = new Size(862, 381);
+            tabPage2.Size = new Size(862, 376);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Recettes";
             tabPage2.UseVisualStyleBackColor = true;
@@ -374,6 +380,7 @@
             // cb_recettes
             // 
             cb_recettes.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_recettes.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cb_recettes.FormattingEnabled = true;
             cb_recettes.IntegralHeight = false;
             cb_recettes.Items.AddRange(new object[] { "Toutes", "Loisirs", "Alimentation", "Transports", "Logement", "Santé", "Revenus", "Autre" });
@@ -410,6 +417,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(528, 22);
             label3.Name = "label3";
             label3.Size = new Size(160, 20);
@@ -419,6 +427,7 @@
             // flp_recettes
             // 
             flp_recettes.AutoScroll = true;
+            flp_recettes.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             flp_recettes.Location = new Point(378, 82);
             flp_recettes.MaximumSize = new Size(448, 286);
             flp_recettes.MinimumSize = new Size(448, 286);
@@ -658,6 +667,7 @@
             MaximumSize = new Size(1204, 661);
             MinimumSize = new Size(1204, 661);
             Name = "GestionBudget";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -719,7 +729,7 @@
         private LinkLabel linkLabel2;
         private TabPage tabPage3;
         private Label l_totmensuel;
-        private Label label11;
+        private Label l_balancemensuelle;
         private Label label13;
         private FlowLayoutPanel flp_general;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartAll;
